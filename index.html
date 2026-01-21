@@ -3,731 +3,1136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HTM150: Nuvolo for Technicians – Labs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <title>HTM150: Nuvolo for Technicians – Epic Labs Adventure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #005ea2;
-      --accent: #cce5ff;
+      --primary: #007bff;
+      --accent: #ffc107;
+      --success: #28a745;
+      --danger: #dc3545;
       --gray-border: #dee2e6;
+      --bg-light: #f8f9fa;
     }
 
     body.light {
       --bg-light: #ffffff;
-      --text-dark: #000000;
+      --text-dark: #212529;
       --card-bg: #ffffff;
       --header-bg: var(--primary);
-      --input-bg: #f4f4f4;
-      --table-head-bg: #f0f0f0;
-      --table-alt-row-bg: #f9f9f9;
-      --image-border: #808080;
-      --gray-border: #adb5bd;
+      --input-bg: #f8f9fa;
+      --table-head-bg: #e9ecef;
+      --table-alt-row-bg: #f8f9fa;
+      --image-border: #ced4da;
     }
 
     body.dark {
-      --bg-light: #1c1e21;
+      --bg-light: #343a40;
       --text-dark: #e9ecef;
-      --card-bg: #2c2f33;
-      --header-bg: #003d7a;
-      --input-bg: #333840;
-      --table-head-bg: #3a3d41;
-      --table-alt-row-bg: #2a2d31;
-      --image-border: #444;
+      --card-bg: #495057;
+      --header-bg: #212529;
+      --input-bg: #6c757d;
+      --table-head-bg: #495057;
+      --table-alt-row-bg: #343a40;
+      --image-border: #6c757d;
       h1, h2, h3 {
         color: var(--accent);
       }
       .callout {
         border-left-color: var(--accent);
+        background: #495057;
       }
       .theme-switch input:checked + .slider {
         background-color: var(--accent);
       }
       input::placeholder,
       select::placeholder {
-        color: #cccccc;
+        color: #adb5bd;
       }
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      font-size: 12pt;
-      line-height: 1.5;
+      font-size: 1rem;
+      line-height: 1.6;
       background: var(--bg-light);
-      padding: 20px;
       color: var(--text-dark);
       transition: background 0.3s ease, color 0.3s ease;
     }
 
-    h1, h2, h3 { color: var(--primary); margin-bottom: 10px; }
-    h1 { font-size: 24pt; }
-    h2 { font-size: 18pt; }
-    h3 { font-size: 14pt; }
+    h1, h2, h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    h1 { font-size: 2.5rem; font-weight: 700; }
+    h2 { font-size: 1.75rem; font-weight: 600; }
+    h3 { font-size: 1.25rem; }
 
-    .header, .footer {
+    .header {
       background-color: var(--header-bg);
       color: white;
       text-align: center;
-      padding: 15px 0;
-      border-radius: 8px;
-      margin-bottom: 24px;
-      transition: background-color 0.3s ease;
+      padding: 20px 0;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .header h1 {
-       margin: 0;
+      margin: 0;
       color: white;
+      font-weight: 700;
     }
 
     .card {
       background: var(--card-bg);
-      padding: 10px;
-      border-radius: 0;
-      box-shadow: none;
-      margin-bottom: 10px;
-      transition: none;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.2s;
     }
-    .card:hover { box-shadow: none; transform: none; }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
     .lab-section {
-      display: none;
-      background: var(--card-bg);
-      border-left: none;
-      border-radius: 0;
-      box-shadow: none;
-      padding: 10px;
-      margin-bottom: 10px;
-      animation: none;
-      transition: none;
+      animation: fadeIn 0.5s ease-in-out;
     }
-    .lab-section.active { display: block; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .styled-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12pt; background-color: var(--card-bg); color: var(--text-dark); }
-    .styled-table th, .styled-table td { border: 1px solid var(--gray-border); padding: 10px; vertical-align: top; text-align: left; }
-    .styled-table thead th { background-color: var(--table-head-bg); }
-    .styled-table tbody tr:nth-child(even) { background-color: var(--table-alt-row-bg); }
+    .styled-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 15px;
+      font-size: 1rem;
+      background-color: var(--card-bg);
+      color: var(--text-dark);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .styled-table th, .styled-table td {
+      border: 1px solid var(--gray-border);
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+    .styled-table thead th {
+      background-color: var(--table-head-bg);
+      font-weight: 600;
+    }
+    .styled-table tbody tr:nth-child(even) {
+      background-color: var(--table-alt-row-bg);
+    }
 
-    img { display: block; margin-top: 10px; max-width: 40%; height: auto; border: 1px solid var(--image-border); border-radius: 4px; }
+    img {
+      display: block;
+      margin: 15px auto;
+      max-width: 80%;
+      height: auto;
+      border: 1px solid var(--image-border);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
 
-    .filter-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .nav-tabs .nav-link {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .nav-tabs .nav-link.active {
+      color: var(--accent);
+      border-color: var(--accent) var(--accent) transparent;
+    }
 
-    .theme-switch { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+    .theme-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
     .theme-switch input { display: none; }
-    .theme-switch .slider { width: 40px; height: 20px; background-color: #ccc; border-radius: 20px; position: relative; transition: background-color 0.3s ease; }
-    .theme-switch .slider::before { content: ""; position: absolute; width: 16px; height: 16px; top: 2px; left: 2px; background-color: white; border-radius: 50%; transition: transform 0.3s ease; }
-    .theme-switch input:checked + .slider { background-color: var(--primary); }
-    .theme-switch input:checked + .slider::before { transform: translateX(20px); }
+    .theme-switch .slider {
+      width: 40px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 20px;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+    .theme-switch .slider::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 2px;
+      left: 2px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    .theme-switch input:checked + .slider {
+      background-color: var(--primary);
+    }
+    .theme-switch input:checked + .slider::before {
+      transform: translateX(20px);
+    }
     .switch-label { font-size: 0.9rem; color: var(--text-dark); }
 
-    .toggle-button { background-color: var(--primary); color: white; border: none; padding: 8px 12px; border-radius: 4px; font-size: 0.95rem; cursor: pointer; margin: 10px 0; transition: background-color 0.3s ease; }
-    .toggle-button:hover { background-color: #003d7a; }
+    .callout {
+      border-left: 5px solid var(--primary);
+      background: var(--table-alt-row-bg);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-style: italic;
+    }
 
-    .callout { border-left: 4px solid var(--primary); background: var(--table-alt-row-bg); padding: 10px 12px; border-radius: 6px; margin: 10px 0; }
+    .progress {
+      height: 25px;
+      margin-bottom: 20px;
+    }
 
-    .container { max-width: none; margin: 0; }
+    .btn-toggle {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-toggle:hover {
+      background-color: #0056b3;
+    }
 
-        input[type="text"],
+    .accordion-button {
+      font-weight: 600;
+    }
+
+    input[type="text"],
     select {
       background-color: var(--input-bg);
       color: var(--text-dark);
       border: 1px solid var(--gray-border);
-      padding: 8px;
-      border-radius: 4px;
+      padding: 10px;
+      border-radius: 5px;
       box-sizing: border-box;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: border-color 0.3s;
+    }
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--primary);
+    }
+
+    .badge-completed {
+      background-color: var(--success);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .badge-collection {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #6c757d;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .badge-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .badge-item.earned {
+      background: linear-gradient(135deg, var(--success), #198754);
+      border: 2px solid gold;
+    }
+    .badge-item i {
+      font-size: 1.2rem;
+    }
+
+    .emoji {
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body class="light">
   <header class="header">
-    <h1>HTM150: Nuvolo for Technicians – Labs</h1>
+    <h1>HTM150: Nuvolo for Technicians – Epic Labs Adventure <i class="fas fa-rocket emoji"></i></h1>
+    <p>Embark on an exciting journey to master Nuvolo! Level up your skills with interactive labs and challenges.</p>
   </header>
 
-  <section class="card filter-bar">
-    <div>
-      <strong>Select Lab:</strong>
-      <select id="labFilter" onchange="filterLabs()">
-        <option value="">----Select----</option>
-        <option value="User Guide">User Guide</option>
-        <option value="Lab 1: Orientation and Navigation">Lab 1: Orientation and Navigation</option>
-        <option value="Lab 2: Work Orders and Documentation">Lab 2: Work Orders and Documentation</option>
-        <option value="Optional Lab: Customizing Columns in List View">Optional Lab: Customizing Columns in List View</option>
-        <option value="Lab 3: Preventative Maintenance">Lab 3: Preventative Maintenance</option>
-        <option value="Lab 4: Asset Management">Lab 4: Asset Management</option>
-        <option value="Lab 5: Technician Capstone Lab">Lab 5: Technician Capstone Lab</option>
-      </select>
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Choose Your Quest</h2>
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider"></span>
+        <span class="switch-label">Dark Mode <i class="fas fa-moon"></i></span>
+      </label>
     </div>
 
-    <label class="theme-switch">
-      <input type="checkbox" id="theme-toggle">
-      <span class="slider"></span>
-      <span class="switch-label">Dark Mode</span>
-    </label>
-  </section>
-
-  <main class="container">
-    <section class="lab-section active" data-lab="User Guide">
-      <h2>User Guide</h2>
-      <p>Welcome to the HTM150: Nuvolo for Technicians Labs! This guide is designed to help you navigate through the various labs included in this course. Each lab focuses on a specific aspect of using Nuvolo for biomedical technicians, providing hands-on experience and practical knowledge.</p>
-      <h3>Getting Started</h3>
-      <ol>
-        <li><strong>Access Nuvolo Development Environment:</strong> Use the DEV environment for all labs. Login via <a href="https://vaoittest.servicenowservices.com">https://vaoittest.servicenowservices.com</a> with your VA.gov account.</li>
-        <li><strong>Set Up YourHTM Development Environment:</strong> Navigate to <a href="https://vaoittest.servicenowservices.com/htm">https://vaoittest.servicenowservices.com/htm</a></li>
-        <li><strong>Navigate This Guide:</strong> Use the dropdown menu above to select a specific lab. All sections include step-by-step instructions, screenshots, and interactive elements like input fields for answers.</li>
-        <li><strong>Theme Toggle:</strong> Switch between light and dark mode using the toggle in the top right for better readability.</li>
-      </ol>
-      <h3>Tips for Success</h3>
-      <ul>
-        <li><strong>Explore Freely:</strong> Don't hesitate to click around Nuvolo—use the "History" tab to backtrack if needed. Avoid using your browser's back button, as it may not work well with Nuvolo.</li>
-        <li><strong>Document Your Work:</strong> Many labs include input fields for recording answers (e.g., work order numbers). Use these to track your progress and share with instructors.</li>
-        <li><strong>Troubleshooting:</strong> If you encounter issues, you're not alone! Ask your instructor(s) for help and you'll be helping out your peers too!</li>
-        <li><strong>Practice Hypotheticals:</strong> Labs encourage creating hypothetical work orders and assets to build confidence without real-world consequences.</li>
-      </ul>
-      <p>If you have questions, reach out to your instructor or refer to the course materials. Happy learning and mastering Nuvolo!</p>
-      <p>Happy learning!</p>
-    </section>
-
-    <section class="lab-section" data-lab="Lab 1: Orientation and Navigation">
-      <h2>Lab 1: Orientation and Navigation</h2>
-
-      <h3>Part 1: Creating Favorites</h3>
-      <p>Many, if not all of the features you will be using will be located under the “Clinical Asset Management” and “Clinical Asset Management Admin” modules. For ease of navigation, we will show you how to favorite and pin those lists, so you always have easy access.</p>
-      <ol>
-        <li>Login to Nuvolo using the following website:
-          <ol type="a">
-            <li>vaoititest.servicenowservices.com</li>
-          </ol>
-        </li>
-        <li>When prompted, select your VA.gov account to sign in</li>
-        <li>Upon login, confirm you see the following banner at the top of your screen (it may be pink or yellow):
-          <img src="Lab-Images/Lab 1-1.3.png" alt="Lab 1, Step 1.3" style="max-width:100%">
-        </li>
-         <li>Select the Profile Icon in the top right corner of your browser
-          <img src="Lab-Images/Lab1-1.4.png" alt="Lab 1, Step 1.4" style="max-width:100%">
-        </li>
-        <li>Confirm you see the following list (it should have your name, not Kevin Jeter):
-          <img src="Lab-Images/Lab1-1.5.png" alt="Lab 1, Step 1.5" style="max-width:100%">
-        </li>
-        <li>Select “Profile”
-          <img src="Lab-Images/Lab1-1.6.png" alt="Lab 1, Step 1.6" style="max-width:100%">
-        </li>
-        <li>Once you have selected “Profile” you can confirm all of your information is accurate
-          <img src="Lab-Images/Lab1-1.7.png" alt="Lab 1, Step 1.7" style="max-width:100%">
-        </li>
-        <li>Now click on your Profile Icon again </li>
-        <li>Select "Preferences" from the dropdown list 
-          <img src="Lab-Images/Lab1-1.8.png" alt="Lab 1, Step 1.8" style="max-width:100%">
-        </li>
-        <li>Once you have selected “Preferences” you can adjust user setting to your preferences and desires
-          <img src="Lab-Images/Lab1-1.9.png" alt="Lab 1, Step 1.9" style="max-width:100%">
-        </li>
-      </ol>
-
-      <h3>Part 2: Setting up Your Ward</h3>
-      <p>When work orders are dynamically assigned, it is based on your Ward. We'll need to make sure this is updated and accurate.</p>
-      <ol>
-        <li> Navigate to yourHTM at <a href="https://vaoittest.servicenowservices.com/htm">https://vaoittest.servicenowservices.com/htm</a></li>
-      </ol>
-      <li> Upon login, select ""Set My Filters"
-        <img src="Lab-Images/Lab1-2.1.png" alt="Lab 1, Step 2.1" style="max-width:100%">
+    <ul class="nav nav-tabs mb-4" id="labTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="guide-tab" data-bs-toggle="tab" data-bs-target="#guide" type="button" role="tab">User Guide</button>
       </li>
-      <li> You'll see 2 required fields that need to be completed: your VISN and Facility. Also fill in details for "Campus" and "Building." After selecting the appropriate options, click "Submit."
-        <img src="Lab-Images/Lab1-2.2.png" alt="Lab 1, Step 2.2" style="max-width:100%">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab1-tab" data-bs-toggle="tab" data-bs-target="#lab1" type="button" role="tab">Lab 1: Orientation Quest</button>
       </li>
-      <h3>Part 3: Setting Up & Personalizing your Favorites</h3>
-      <p>Let's navigate back to our Nuvolo interface and get things set-up for day-to-day work.</p>
-      <p>We will also show you how to edit your Favorites Bar to make it more personalized and easier to use.</p>
-      <ol>
-        <li>At the top left corner of your browser, select “All” 
-          <img src="Lab-Images/Lab1-3.1.png" alt="Lab 1, Step 3.1" style="max-width:100%">
-        </li>
-        <li>In the dropdown list, type in “Clinical Asset Management” into your Filter bar If you are taking the Nuvolo Manager Training, you should repeat these steps for “Clinical Asset Management Admin”:
-          <img src="Lab-Images/Lab1-3.2.png" alt="Lab 1, Step 3.2" style="max-width:100%">
-        </li>
-        <li>Hover your mouse over “Clinical Asset Management”</li>
-        <li>Click the star icon to the right of “Clinical Asset Management." Select "Done": 
-          <img src="Lab-Images/Lab1-3.3.png" alt="Lab 1, Step 3.3" style="max-width:100%">
-        </li>
-        <li>At the top left corner of your browser, select "Favorites" </li>
-        <li>Confirm your “Favorites” menu contains “Clinical Asset Management”
-          <img src="Lab-Images/Lab1-3.4.png" alt="Lab 1, Step 3.4" style="max-width:100%">
-        </li>
-        <li>Select the pin icon to pin your Favorites bar
-          <img src="Lab-Images/Lab1-3.5.png" alt="Lab 1, Step 3.5" style="max-width:100%">
-        </li>
-        <li>Reference your Favorites Bar and expand “Clinical Asset Management” by clicking on the arrow on the left side of its name
-          <img src="Lab-Images/Lab1-3.6.png" alt="Lab 1, Step 3.6" style="max-width:100%">
-        </li>
-        <li>We don't need all of the items in Clinical Asset Management. Let's practice removing a favorite. Frist, scroll down the list until you see “Emergency Events & Contacts” </li>
-        <li>Hover your mouse over the name "Emergency Events & Contacts" and click the "X" to remove it from your Favorites Bar.
-          <img src="Lab-Images/Lab1-3.7.png" alt="Favorites bar expanded to show Emergency Events & Contacts, with X icon next to it" style="max-width:100%">
-        </li>
-        <li>You will see the following pop up, click "Remove" to confirm the removal from your Favorites Bar.
-          <img src="Lab-Images/Lab1-3.8.png" alt="Remove favorite confirmation popup with Remove and Cancel buttons"  style="max-width:100%">
-        </li>
-        <li>That module will no longer be found in your Favorites Bar. If you ever need to reference it, you can find it in the "All" Bar. </li>
-        <li>We can clean up our Favoites bar in a more efficient way. Click the pencil and notepad icon at the top of your Favorites Bar to edit your favorites.
-          <img src="Lab-Images/Lab1-3.9.png" alt="Favorites bar with edit icon (pencil and notepad) highlighted"  style="max-width:100%">
-        </li>
-        <li>Here we can customize icon, color, and remove favorites much more efficiently. Press the small "x"s to quickly remove the following items from your Favorites Bar:
-          <ol>
-            a. External Companies<br>
-            b. Transfer Orders<br>
-            c. Purchase Requisitions<br>
-            d. Contracts<br>
-            e. Surveys<br>
-            f. Knowledge<br>
-            g. Work Projects
-          </ol>
-          <img src = "Lab-Images/Lab1-3.10.png" alt="Favorites bar in edit mode with X icons next to each favorite"  style="max-width:100%">
-        </li>
-       </ol>
-
-      <h3>Part 4: Tools and Shortcuts</h3>
-      <p>We've covered how to navigate Nuvolo, access your preferences, view your profile, customize your Favorites, and navigate between pages. Now we want to make sure you can quickly and efficiently use Nuvolo. This part will focus on some tips and tricks to ensure that you are maximizing your time while using Nuvolo.</p>
-      <ol>
-        <li>First and foremost, let's use the Search Bar. We'll start with the Favorites Search Bar. Type "Work Order" into your Favorites Search Bar.
-          <img src="Lab-Images/Lab1-4.1.png" alt="Favorites Search Bar with 'Work Order' typed, showing matching items like My Work Order Boards, Work Orders, New Work Order, All non-PM, All PM, etc."  style="max-width:100%">
-          <ol type="a">
-            <li>NOTE: when using the Favorites Search Bar, you will only see menu items that have been added to your Favorites</li>
-          </ol>
-        </li>
-        <li>Let's use the All-Purpose Search Bar (the Search Bar that doesn't limit you to only Favorites). Click on “All” at the top of your browser and type “Promo Codes”
-          <img src="Lab-Images/Lab1-4.2.png" alt="All-Purpose Search Bar with 'Promo Codes' typed, showing matching items like Promo Codes, Cost Items, Cost Item Categories, etc."  style="max-width:100%">
-          <ol type="a">
-            <li>Notice how “Cost Items” was not saved to your Favorites, but you were still able to find it. This All-Purpose Search Bar will allow you to find any menu item or feature even if it has not been saved to your Favorites.</li>
-          </ol>
-        </li>
-        <li>Another extremely useful feature is “History.” At the top of your browser, click on “History.” Confirm you can see the history of pages you’ve visited in Nuvolo, similar to 
-          <img src="Lab-Images/Lab1-4.3.png" alt="All-Purpose Search Bar with 'Promo Codes' typed, showing matching items like Promo Codes, Cost Items, Cost Item Categories, etc."  style="max-width:100%">
-            <li>This feature is extremely helpful if you find yourself frequently visiting the same page, Work Order, etc.
-              <ol type="i">
-                <li>NOTE: History will look different for each user – it is based on personal navigation history within Nuvolo</li>
-                <li>NOTE: USE THE HISTORY TAB INSTEAD OF THE BACK BUTTON. Nuvolo doesn't work well if you use the browser back button.</li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-        <li>The HTM Nuvolo User Interface Dashboard will be an extremely helpful landing page as you go about your day-to-day work. This Dashboard will display items such as:
-          <ol type="a">
-            <li>My approvals</li>
-            <li>Tickets assigned to me</li>
-            <li>My team's work</li>
-            <li>Tickets for me</li>
-          </ol>
-        </li>
-        <li>Since this dashboard will have valuable information, unique to you as the user, let's add it to Favorites. Click on "All" at the top left corner of your browser and type "Dashboards." Select "Dashboards" from the dropdown list
-          <img src="Lab-Images/Lab1-4.4.png" alt="HTMUser Dashboard with star icon highlighted in the top bar" style="max-width:100%">
-        </li>
-        <li>In the Dashboards pane, select "All" and Search "HTM Technician User Interface"
-          <img src="Lab-Images/Lab1-4.5.png" alt="Dashboards pane with 'HTM Technician User Interface' typed in the search bar" style="max-width:100%">
-        </li>
-        <li>Once you're selected into the Dashboard, select the "Star" icon in the top to add it to your Favorites
-          <img src="Lab-Images/Lab1-4.6.png" alt="HTM Technician User Interface Dashboard with star icon highlighted in the top bar" style="max-width:100%">
-        </li>
-      </ol>
-      <p>Okay great, now you've established some easy-to-use shortcuts that will help your navigation with Nuvolo. Next, we want you to use those shortcuts to navigate and answer the following questions. As you complete the next part of the lab, keep in mind that there are typically multiple ways to find something within Nuvolo. For each questions, part of your answer will be HOW you found your answer. Don't forget about features like History, Recent, Favorites, Search Bars, dropdown lists, Dashboards, etc.</p>
-
-
-
-      <h3>Part 5: Scavenger Hunt</h3>
-      <p>Okay great, so now you’ve followed along as we introduced you to your profile, your preferences, dashboards, your favorites bar, and the most important list you will be using: Clinical Asset Management. Next, I want you to use what you know and your current favorites bar setup to explore Nuvolo and find some features. Answer the questions below by navigating around the site and exploring. Don’t be afraid to ask questions!</p>
-      <ol>
-        <li>How can you open a link in a new tab in Nuvolo? <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-        <li>Where can you find the HTM Nuvolo Technician Guide? <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-        <li>Where can you go to change your time zone? <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-        <li>Where can you see a list of all dashboards? <input type="text" name="q5" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-        <li>Under “Favorites,” where does “Home” take you? <input type="text" name="q6" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-        <li>Change one of your Favorites to the color purple. <input type="text" name="q7" placeholder="Describe what you changed or note completion" style="width: 100%; height: 30px;"></li>
-      </ol>
-    </section>
-
-    <section class="lab-section" data-lab="Lab 2: Work Orders and Documentation">
-      <h2>Lab 2: Work Orders and Documentation</h2>
-
-      <h3>Part 1: Introduction to Work Orders</h3>
-      <p>Now that you have some familiarity with Nuvolo and its User Interface, we can move on to one of the most utilized aspects of the system: Work Orders. Work Orders in Nuvolo serve as the central mechanism for tracking, managing, and documenting maintenance activities on medical equipment. Whether it’s scheduled preventive maintenance (PM), corrective repair, or incoming inspection, each task is initiated and recorded through a work order. Nuvolo provides a standardized digital platform, integrated with the VA’s ServiceNow system, that helps biomedical engineers and technicians capture essential details such as equipment ID, location, service dates, labor time, and parts used. This ensures regulatory compliance, accurate performance metrics, and consistent communication across facilities. In short, work orders in Nuvolo are the backbone of the VA’s equipment lifecycle management, ensuring safe, reliable operation of medical devices across the healthcare system.</p>
-      <ol>
-        <li>Reference your pinned Favorites Bar on the left-hand side of your browser and expand "Clinical Asset Management" if it is not already expanded
-          <img src="Lab-Images/Lab2-1.1.png" alt="Screenshot of Favorites Bar showing Home, Clinical Asset Management, Clinical Asset Management Admin, Self-Service - Dashboards, ITIL User Dashboard" style="max-width:100%">
-        </li>
-        <li>Scroll down the list until you see “Work Orders” and expand the list (there may be two, select the second one if that is the case)
-          <img src="Lab-Images/Lab2-1.2.png" alt="Screenshot of Favorites Bar with Clinical Asset Management expanded to show Work Orders sub-list" style="max-width:100%">
-        </li>
-         <p>As you can see in this sub-list, you are able to handle all Work Order matters within this list. You have the ability to view all PM and non-PM Work Orders, view Open/Pending Work Orders, view specific Work Orders assigned to you, and view Work Orders assigned to your group. Additionally, you have the ability to create a new Work Order.</p>
-      </ol>
-
-      <h3>Part 2: Creating a New Work Order</h3>
-      <p>Now we will dive into the steps that you need to take to create a Work Order. We will only be highlighting the most important or required portions of the Work Order you will need to complete. However, when going through the lab, please take the time to complete all of the fields within the Work Order form. It will help your confidence in using the system and provide more detailed Work Orders in the future!</p>
-      <ol>
-        <li>Select “New Work Order”
-          <img src="Lab-Images/Lab2-2.1.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"  style="max-width:100%">
-        </li>
-         <li>Let's familiarize ourselves with some of the required fields within a Work Order</li>
-        <li>Select a Work Order Type using the magnifying glass icon
-          <img src="Lab-Images/Lab2-2.2.png" alt="Screenshot of New Work Order form highlighting the Work Order Type field"  style="max-width:100%">
-        </li>
-        <li>Select an Asset using the magnifying glass icon
-          <img src="Lab-Images/Lab2-2.3.png" alt="Screenshot of New Work Order form highlighting the Asset field"  style="max-width:100%">
-        </li>
-        <li>Select and Asset Type using the magnifying glass icon
-          <img src="Lab-Images/Lab2-2.4.png" alt="Screenshot of New Work Order form highlighting the Asset Type field"  style="max-width:100%">
-        </li>
-        <li>Select a Priority level
-          <img src="Lab-Images/Lab2-2.5.png" alt="Screenshot of New Work Order form highlighting the Priority field"  style="max-width:100%">
-        </li>
-        <li>Write a brief Work Order Summary
-          <img src="Lab-Images/Lab2-2.6.png" alt="Screenshot of New Work Order form highlighting the Work Order Summary field"  style="max-width:100%">
-        </li>
-      </ol>
-      <p>These are the required fields that you must complete prior to moving to the next step of the Work Order. With that in mind, let's dive in and write an entire Work Order. Provide as much detail as possible – the expectation is that you fill out every field, not just the required ones. The extra detail is crucial for proper documentation.</p>
-
-      <h3>Part 3: Create Your Own Work Order</h3>
-      <ol>
-        <li>Create your own work order. This Work Order is <strong>completely hypothetical!</strong> Have fun with it, and use it as an opportunity to familiarize yourself with the Work Order Document. Document the following information and be prepared to share with the class:
-          <ol type="a">
-            <li>Due Date</li>
-            <li>Number</li>
-            <li>Work Order Type</li>
-            <li>Asset – should be asset-based workorder
-              <ol type="i">
-                <li>Show the magnifying glass next to the “Asset” so they can filter things down</li>
-              </ol>
-            </li>
-            <li>Asset Type – this auto populates when you select the asset!</li>
-            <li>Priority</li>
-            <li>Work Order Summary</li>
-            <li>Brief Description</li>
-          </ol>
-        </li>
-        <li>Next, the Work Order needs to be assigned to a technician. Select “Pending Assignment” once all of your Work Order fields are complete
-          <ol type="a">
-            <li>If you double-click on the “Ready for Work”, it automatically moves it to the next state and saves</li>
-            <li></li>
-          </ol>
-        </li>
-        <li>Once the new page has loaded, explore the page and find the text field labeled “Assigned To.” Using this text field, assign yourself as the technician for this Work Order.</li>
-        <li>Once you have assigned yourself as the technician, select “Ready for Work”</li>
-        <li>Now select “Save”
-          <img src="Lab-Images/Lab2-3.1.png" alt="Screenshot of Work Order form with Save button highlighted" style="max-width:100%">
-        </li>
-      </ol>
-      <p>Congratulations! You have just created your first Nuvolo Work Order and assigned a technician to perform the work. You might be thinking, “Great, but where can someone go to view the Work Order that was just created?” Well today is your luck day – now we are going to explore how to view an open/existing work order!</p>
-        <li>Let's record the Work Order #:  <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-           <img src="Lab-Images/Lab2-3.2.png" alt="Screenshot of Work Order form highlighting the Work Order Number field" style="max-width:100%"></li>
-         <li>Let's record the Work Order Summary:  <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-           <img src="Lab-Images/Lab2-3.3.png" alt="Screenshot of Work Order form highlighting the Work Order Number field" style="max-width:100%"></li>
-    </section>
-
-    <section class="lab-section" data-lab="Optional Lab: Customizing Columns in List View">
-      <h2>Optional Lab: Customizing Columns in List View</h2>
-
-      <h3>Introduction to Customizing Columns</h3>
-      <p>In Nuvolo, the List View is a powerful tool that allows users to view and manage records efficiently. One key feature of the List View is customizing columns. Customizing columns allows users to tailor the List View to their preferences by adding, removing, or rearranging columns to display the most pertinent data for their tasks.</p>
-
-      <h3>Customizing Columns in List View</h3>
-      <ol>
-        <li>Navigate to the Work Orders "All PM"
-          <img src="Lab-Images/LabOptional_1.1.png" alt="Screenshot highlighting 'All PM' in the Work Orders sub-list" style="max-width:100%">
-        </li>
-        <li>In the List View, click on the Gear Icon in the top right corner.
-          <img src="Lab-Images/LabOptional_1.2.png" alt="Screenshot of List View with Gear Icon highlighted" style="max-width:100%">
-        </li>
-        <li>From here, we can move columns from Available to Selected or vice versa. We can also rearrange the order of the columns.
-          <img src="Lab-Images/LabOptional_1.3.png" alt="Screenshot of Column Customization dialog with Available and Selected columns" style="max-width:100%">
-        </li>
-        <li>Let's practice moving some columns. 
-          <ol type="a">
-            <li>Move "Asset.Owning Department", "Assignment Group", and all "Work Location" items from Available to Selected. Hint: if you hold down "Ctrl" you can select multiple items at once.
-              <img src="Lab-Images/LabOptional_1.4.png" alt="Screenshot of Column Customization dialog showing multiple columns selected" style="max-width:100%">
-            </li>
-            <li>Move "Due Date", "Actual Start", and "Initiated from" from Available to Selected
-              <img src="Lab-Images/LabOptional_1.5.png" alt="Screenshot of Column Customization dialog showing multiple columns selected" style="max-width:100%">
-            </li>
-            <li>Rearrange the order so that "Due Date" appears before "Assigned To"
-              <img src="Lab-Images/LabOptional_1.6.png" alt="Screenshot of Column Customization dialog showing Due Date moved before Assigned To" style="max-width:100%">
-            </li>
-          </ol>
-        </li> 
-        <li>Click "Ok" to update the List View with your customized column settings.
-          <img src="Lab-Images/LabOptional_1.7.png" alt="Screenshot of Column Customization dialog with Ok button highlighted" style="max-width:100%">
-        </li>
-      </ol>
-
-      <h3>Filtering Your Lists</h3>
-      Now that you have customized your columns, let's practice filtering the List View to find specific records. 
-      <ol>
-        <li>The first way we'll practice is with the column open text searches. In the "Work Order Type" column, type in "Maintenance" and press Enter.
-          <img src="Lab-Images/LabOptional_2.1.png" alt="Screenshot of List View with Work Order Type being searched" style="max-width:100%">
-        </li>
-        <li>Note that you have No Records to Display. This is because the search is looking for a "Starts with" match. We can verify this by clicking the Funnel Icon in the top left corner.
-          <img src="Lab-Images/LabOptional_2.2.png" alt="Screenshot of Filter dropdown menu with Work Order Type options" style="max-width:100%">
-        </li>
-        <li>To change this, we want to search for "Contains" instead of "Starts with". In the Work Order Type filter, include an * at the beginning and end of "Maintenance" so it reads "*Maintenance*" and press Enter.
-          <img src="Lab-Images/LabOptional_2.3.png" alt="Screenshot of Filter dialog with Apply button highlighted" style="max-width:100%">
-        </li>
-        <li>Let's verify this in the filters one more time to see how it changed. 
-          <img src="Lab-Images/LabOptional_2.4.png" alt="Screenshot of Filter dropdown menu with Work Order Type options showing Contains filter" style="max-width:100%">
-        </li>
-        <li>Another way to filter your lists is by using the "AND" and "OR" buttons. Let's practice this now. Click the "AND" button next to the existing filter. Notice how an extra line appears for you to add another condition.
-          <img src="Lab-Images/LabOptional_2.5.png" alt="Screenshot of List View with AND button highlighted" style="max-width:100%">
-        </li>
-        <li>We can filter on ANY field, even if it's not in the visible fields. For this final step, use the filters to find the work order you created in Lab 2. What filters were most useful to use? <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-      </ol>
-      
-    </section>
-
-    <section class="lab-section" data-lab="Lab 3: Preventative Maintenance">
-      <h2>Lab 3: Preventative Maintenance</h2>
-
-      <h3>Part 1: Introduction to Preventative Maintenance</h3>
-      <p>The good news about Preventative Maintenance within Nuvolo is that it is very similar to writing any style of Work Order! You may actually notice a large amount of overlap between this lab and Lab 2. You will have another chance create a Work Order; except this time we will exclusively be focusing on a Preventative Maintenance Work Order. Keep in mind, most of your PM Work Orders will NOT be manually created. But we will manually create one today to reinforce Work Order training, and to provide you insight into the details that make up a PM Work Order.</p>
-      <ol>
-        <li>Reference your Favorites Bar and in the Search Bar, type "Work Orders"
-          <img src="Lab-Images/Lab3-1.1.png" alt="Screenshot of Favorites Search Bar with 'Work Orders' typed, showing My Work Order Boards, Work Orders, New Work Order, All non-PM, All PM, etc." style="max-width:100%">
-        </li>
-        <li>Select “New Work Order”
-          <img src="Lab-Images/Lab3-1.2.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-        </li>
-        <li>This page should look familiar! We are back on a page that allows us to create a new work order. Reference the “Work Order Type” text field and select the magnifying glass icon
-          <img src="Lab-Images/Lab3-1.3.png" alt="Screenshot highlighting" style="max-width:100%">
-
-        <li>For this work order, select “Preventative Maintenance”
-          <img src="Lab-Images/Lab3-1.4.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-        <li>From here, complete the following steps to finish Part 1 of the Lab:
-          <ol type="a">
-            <li>Select an Asset Type of your choosing</li>
-            <li>Select a Due Date</li>
-            <li>Select a Priority</li>
-            <li>Complete the “Work Order Summary”</li>
-            <li>Record the “Assignment Group” that gets generated</li>
-            <li>Record the “Assigned To” technician that gets generated</li>
-            <li>Record the Work Order Number</li>
-          </ol>
-        </li>
-        <li>Congratulations! You have just created a Draft of a manually generated Preventative Maintenance Work Order. We’re far from done though… next, we need to be able to find and access this Work Order.</li>
-      </ol>
-
-      <h3>Part 2: Finding and Accessing Active PM Work Orders</h3>
-      <ol>
-        <li>Reference your Favorites Bar. In the Search Bar, type “PM”
-          <img src="Lab-Images/Lab3-2.1.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-        <li>Select “All-PM”
-          <img src="Lab-Images/Lab3-2.2.png" alt="Screenshot highlighting 'All PM' in the Work Orders sub-list" style="max-width:100%">
-        </li>
-        <li>Let’s take a look at the filters that come pre-assigned on the “All PM” page.
-          <img src="Lab-Images/Lab3-2.3.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-            <li>These conditions are pre-assigned to this tab to help you easily find data and present you PM Work Orders based on your assigned role, facility, user permissions, etc.</li>
-          </ol>
-        </li>
-        <li>To reference the specific PM Work Order you just created in step one, let's add a filter. Select the “AND” button
-          <img src="Lab-Images/Lab3-2.4.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-        <li>Configure your next filter to read as “Assigned To... is”
-          <img src="Lab-Images/Lab3-2.5.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-        <li>Use the magnifying glass icon to find the name of the technician that the Work Order was assigned to
-          <img src="Lab-Images/Lab3-2.6.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-        <li>The PM Work Order you created earlier will be in this list (if you assigned it to yourself!)</li>
-        <li>Let's record the Work Order #:  <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        </li>
-        <li>One tip for easy navigation is the Global Search. If you remember or have a work order number on hand, it's alot easier to just search for it directly rather than applying filters. Let's try that now.</li>
-        <li>At the top of your browser, locate the Global Search Bar
-          <img src="Lab-Images/Lab3-2.7.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-        <li>Type in the exact Work Order Number you had created in Part 1. You can see it instantly appears in the dropdown list
-          <img src="Lab-Images/Lab3-2.8.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list" style="max-width:100%">
-
-      </ol>
-      <p>Now that we've created a PM Work Order and discovered how to find them, let's recap some key information.</p>
-      <ul>
-        <li>In general, you will not need to manually create PM Work Orders. We manually created a PM Work Order in this lab to allow you more hands-on experience with Work Orders and to have a specific reference for follow-on lab use.</li>
-        <li>Filters are a great way to find specific batches of data, to include Work Orders. Selecting the correct tab (in this instance, “All PM”) will come with pre-assigned filters to automatically show you data that applies to your specific Nuvolo account. If you want to alter the data that is being shown, feel free to play around with filters to meet your specific needs.</li>
-        <li>The Global Search Function is the single best way to find specific data within Nuvolo. If you have a Work Order, Asset, etc. you can use the Global Search Function to reference that item</li>
-      </ul>
-
-      <h3>Part 3: What if Preventative Maintenance turns into Corrective Maintenance?</h3>
-      <p>Okay close your eyes and picture this: You are scheduled to complete standard Preventative Maintenance on a piece of equipment. You start your PM check and realize that the equipment is broken and will require more work than the standard PM. What should you do?</p>
-      <ol>
-        <li>Ignore the problem</li>
-        <li>Upgrade the PM Work Order to a Corrective Maintenance Work Order</li>
-      </ol>
-      <p>Hopefully you selected number 2!</p>
-      <p>Let's walk through that scenario. Reopen the PM Work Order you created in Part 1 and Part 2 of this lab.</p>
-      <ol>
-        <li>Let's say work is In Progress for a PM Work Order.
-              <img alt="Screenshot of Work Order page in Work in Progress state for a PM Work Order" src="Lab-Images/Lab3-3.1.png" style="max-width:100%">
-        </li>
-        <li>There are two ways to elevate a PM Work Order to a CM Work Order. <b>Do NOT use the "Create CM Work Order" button at the top of the page.</b> Instead, we'll close the Work Order with the Resolution Code "Correct Action Required." This will automatically generate a CM Work Order AND close out the PM Work Order</li>
-        <li>Scroll to the bottom of the page where you can set the "Resolution Code", "Service Complete Date", and "Resolution Detail". Fill in the "Service Complete Date" and add in some Resolution Details.
-          <img alt="Screenshot highlighting 'Related Links' section at the bottom of the Work Order page" src="Lab-Images/Lab3-3.2.png" style="max-width:100%">
-        </li>
-        <li>Select the "Resolution Code" dropdown and select "Corrective Action Required"
-          <img alt="Screenshot highlighting 'Resolution Code' dropdown on Work Order page" src="Lab-Images/Lab3-3.3.png" style="max-width:100%">
-        </li>
-        <li>We must record Parts/Services prior to moving the work order into Pending Documentation. To do so, scroll down and select "New Parts/Services"
-          <img alt="Screenshot highlighting 'Parts/Services' related list on Work Order page" src="Lab-Images/Lab3-3.9.png" style="max-width:100%">
-        </li>
-        <li>In Work Duration, fill in 1 hour, select save, then select the back button within the workorder.
-          <img alt="Screenshot of Work Duration form with 1 hour filled in" src="Lab-Images/Lab3-3.10.png" style="max-width:100%">
-        </li>
-        <li>Next, double-click "Pending Documentation".
-          <img alt="Screenshot of Work Order page with Pending Documentation state highlighted" src="Lab-Images/Lab3-3.4.png" style="max-width:100%">
-        </li>
-        <li>Once the Work Order is in Pending Documentation, "Pending Review" will become an option. Double click on "Pending Review" to move the Work Order to that state.
-          <img alt="Screenshot of Work Order page with Pending Review state highlighted" src="Lab-Images/Lab3-3.11.png" style="max-width:100%">
-        </li>
-        <li>Notice that once you do that, you'll get a confirmation message at the top of the screen that reads "Automatically moving to Ready to Work". This means that a Corrective Maintenance Work Order has been created! 
-          <img alt="Screenshot of Work Order page with confirmation message at the top" src="Lab-Images/Lab3-3.12.png" style="max-width:100%">
-        </li>
-        <li>Let's find our CM Work Order that was just created. Scroll to the bottom of the page and click "Load Related Lists"
-          <img alt="Screenshot of Work Order page with Load Related Lists button highlighted" src="Lab-Images/Lab3-3.13.png" style="max-width:100%">
-        </li>
-        <li>Select the "Work Order History" tab and you'll see the CM Work Order that was just created! Click on the number in order to view it.
-          <img alt="Screenshot of Work Order page with Work Order History related list highlighted" src="Lab-Images/Lab3-3.14.png" style="max-width:100%">
-        </li>
-      </ol>
-      <p>Now let’s say this entire Work Order has become a very high-visibility issue. As the technician, supervisor, etc. you want the ability to specifically follow this Work Order. It started as a standard PM, and now it’s a troublesome CM issue. You need continuous updates on this Work order.</p>
-      <ol>
-        <li>Reference the top of your page</li>
-        <li>Select the “Follow” button
-          <img src="Lab-Images/Lab3-3.5.png" alt="Screenshot of Work Order page with Follow button highlighted" style="max-width:100%">
-        </li>
-        <li>You will get the following message on your Work Order page
-          <img src="Lab-Images/Lab3-3.6.png" alt="Screenshot of Work Order page with Follow button highlighted" style="max-width:100%">
-        </li>
-        <li>Now let's reference your notifications. Select the notifications icon (the bell)
-          <img src="Lab-Images/Lab3-3.7.png" alt="Screenshot of Work Order page with Follow button highlighted" style="max-width:100%">
-        </li>
-        <li>Use the settings icon to customize notifications as desired.
-          <img alt="Screenshot of notifications dropdown tab" src="Lab-Images/Lab3-3.8.png" style="max-width:100%">
-        </li>
-      </ol>
-      <p>Okay, maybe that felt like a lot! But now you know how to</p>
-      <ul>
-        <li>Manually generate a PM Work Order</li>
-        <li>Find and filter for PM Work Orders (and any type of Work Order)</li>
-        <li>Search for specific Work Orders via Global Search Function</li>
-        <li>Elevate a PM Work Order to a CM Work Order</li>
-        <li>Follow and track a Work Order</li>
-      </ul>
-      <p>You're well on your way to being a Nuvolo pro!</p>
-    </section>
-
-    <section class="lab-section" data-lab="Lab 4: Asset Management">
-      <h2>Lab 4: Asset Management</h2>
-      <p>Mostly everything we've talked about so far has been centered around Work Orders – how to create them, how to view them, how to upgrade them, etc. You're probably tired of talking about Work Orders. So let's move on to another core pillar of your day-to-day Nuvolo use: Asset Management. Asset Management is all about onboarding new medical devices, new parts, and new asset types. In this lab, we're going to walk through how to onboard a new device, how to reference that device, and any other fundamental techniques that will help you with asset management.</p>
-
-      <h3>Part 1: Finding Equipment and Asset Management Familiarization</h3>
-      <ol>
-        <li>Much like any other task on Nuvolo, let's start by searching in the "All". Search for "Models" and select it from the dropdown.
-          <img src="Lab-Images/Lab4-1.1.png" alt="Screenshot of All-Purpose Search Bar with 'Models' typed, showing Models, Model Categories, Model Manufacturers, etc." style="max-width:100%">
-        </li>
-        <li>You should see a list of data containing models, manufacturers, model numbers, and more. You'll see there are 516,000+ results!
-          <img alt="Screenshot of Models list page showing columns like Model, Manufacturer, Model Number, etc." src="Lab-Images/Lab4-1.2.png" style="max-width:100%">
-        </li>
-        <li>Here is where our filter button comes in handy. Click on the filter button at the top of the page</li>
-        <li>Let’s say you only want to see equipment from a specific manufacturer – let’s assign filters to make that happen. Assign your filter to read: “Manufacturer” and “is”</li>
-        <li>You now can look up equipment based solely on manufacturer. Let’s take a second to play around with these filter options. Explore the list of options and familiarize yourself with helpful data filters.</li>
-        <li>Let’s quickly put your data filtering abilities to the test. Perform the following steps and record the Equipment Number
-          <ol type="a">
-            <li>You want to find a specific piece of equipment and you know the following information:
-              <ol type="i">
-                <li>Asset Type: CARTS: MEDICATION/STORAGE: POWERED</li>
-                <li>Manufacturer: HOWARD MEDICAL</li>
-                <li>Model Name: PARADIGM</li>
-                <li>What is the equipment number?</li>
-              </ol>
-            </li>
-          </ol>
-          <img alt="Screenshot of Models list page showing columns like Model, Manufacturer, Model Number, etc." src="Lab-Images/Lab4-1.3.png" style="max-width:100%">
-        </li>
-        <li>You should have gotten the number: CMOD0118262
-          <img alt="Screenshot of Models list page showing filtered results for CARTS: MEDICATION/STORAGE: POWERED, HOWARD MEDICAL, PARADIGM with Equipment Number CMOD0118262" src="Lab-Images/Lab4-1.4.png" style="max-width:100%">
-        </li>
-        <li>Now that you have a specific equipment number... let's say you wanted to access this equipment on Nuvolo again, but this time you know the exact equipment number... what feature could you use to directly search it?</li>
-        <li>I hope you said... Global Search Function! Type in CMOD0118262 into your Global Search Function at the top of your browser</li>
-        <li>Click "View Results"</li>
-        <li>You should see the following page:
-          <img src="Lab-Images/Lab4-1.5.png" alt="Screenshot of Global Search Results page showing 1 result for Equipment Number CMOD0118262" style="max-width:100%">
-        </li>
-        <li>Select the 1 result and you should see the following page:
-          <img src="Lab-Images/Lab4-1.6.png" alt="Screenshot of Equipment page for Equipment Number CMOD0118262" style="max-width:100%">
-        </li>
-        <li>In this lab, we are only referencing this one particular piece of equipment that I randomly selected. But imagine you reference this page about equipment at your facility. On this page you should be able to see:
-          <ol type="a">
-            <li>Equipment Number</li>
-            <li>Model Name</li>
-            <li>Manufacturer</li>
-            <li>Asset Type</li>
-            <li>ID</li>
-            <li>Price</li>
-            <li>Compatibility</li>
-            <li>Any relevant and useful information you would want to know about any piece of equipment</li>
-          </ol>
-        </li>
-      </ol>
-      <p>So now you've identified how to filter for different equipment, how to search specific equipment if you have the right number, and familiarized yourself with the functions of an equipment page.</p>
-    </section>
-
-    <section class="lab-section" data-lab="Lab 5: Technician Capstone Lab">
-      <h2>Lab 5: Technician Capstone Lab</h2>
-      <p>Congratulations on making it to the final lab of the HTM150 Nuvolo Technician Training! This capstone lab is designed to test your knowledge and skills acquired throughout the previous labs. You will be tasked with a series of challenges that simulate real-world scenarios you may encounter as a technician using Nuvolo. This lab will require you to apply your understanding of work orders, asset management, preventative maintenance, and navigation within the Nuvolo system. Be prepared to demonstrate your proficiency in creating, managing, and resolving work orders, as well as effectively utilizing the asset management features. This capstone lab is not only a test of your technical skills but also an opportunity to showcase your problem-solving abilities and attention to detail. Good luck, and remember to leverage all the tools and knowledge you've gained during this training!</p>
-      <h3>Part 1: Customizing your Navigational Experience</h3>
-      <li>Based on what you've learned in Lab 1, customize your Favorites Bar to match the screenshot below. Change your "Home" to be the HTM Nuvolo User Interface Dashboard.
-        <img src="Lab-Images/Lab5-1.1.png" alt="Screenshot of Favorites Bar showing Home, Clinical Asset Management, Clinical Asset Management Admin, Self-Service - Dashboards, ITIL User Dashboard" style="max-width:100%">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab2-tab" data-bs-toggle="tab" data-bs-target="#lab2" type="button" role="tab">Lab 2: Work Order Warriors</button>
       </li>
-      <h3>Part 2: Work Order Creation and Management</h3>
-      <li>Create a new Corrective Maintenance Work Order for a hypothetical piece of equipment. Ensure to fill out all required fields and assign the work order to yourself. Once created, change the status of the work order to "In Progress" and then to "Pending Documentation."</li>
-      <li>Fill out the following fields: <br>
-        Work Order Number: <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Work Order Type: <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Asset Type and #: <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Priority Level: <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Work Order Summary: <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="optional-tab" data-bs-toggle="tab" data-bs-target="#optional" type="button" role="tab">Optional: Customization Challenge</button>
       </li>
-      <h3>Part 3: Preventative Maintenance Review</h3>
-      <li>Create a Preventative Maintenance Work Order for a hypothetical piece of equipment. Fill out all required fields and assign the work order to yourself. Once created, change the status of the work order to "In Progress" and then to "Pending Documentation."</li>
-      <li>Fill out the following fields: <br>
-        Work Order Number: <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Asset Type and #: <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Priority Level: <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Work Order Summary: <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab3-tab" data-bs-toggle="tab" data-bs-target="#lab3" type="button" role="tab">Lab 3: PM Power-Up</button>
       </li>
-      <li>Elevate the work order to a Corrective Maintenance Work Order by selecting the appropriate Resolution Code and closing out the PM Work Order.</li>
-      <li>Record the newly created Corrective Maintenance Work Order Number: <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-      <h3>Part 4: Scavenger Hunt</h3>
-      <li> What is the link for YourHTM (Nuvolo) SharePoint site? <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-      <li> Who is your BESM VISN HTM Lead or Leads? <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-      <li> Where can you find Nuvolo Knowledge Articles? <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-      <li> What is the link for HTM Nuvolo Release Notices? <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
-    </section>
-  </main>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab4-tab" data-bs-toggle="tab" data-bs-target="#lab4" type="button" role="tab">Lab 4: Asset Adventure</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab5-tab" data-bs-toggle="tab" data-bs-target="#lab5" type="button" role="tab">Lab 5: Capstone Conquest</button>
+      </li>
+    </ul>
 
-  <footer class="footer">
-    <p>&copy; 2026 HTM150 Lab Materials</p>
+    <div class="progress mb-4">
+      <div class="progress-bar bg-success" id="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0% Complete</div>
+    </div>
+
+    <div class="card mb-4">
+      <h3>Your Badge Collection <i class="fas fa-medal emoji"></i></h3>
+      <div class="badge-collection" id="badge-collection">
+        <!-- Badges will be dynamically added here -->
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <div class="tab-pane fade show active lab-section" id="guide" role="tabpanel">
+        <div class="card">
+          <h2>User Guide: Your Nuvolo Adventure Map <i class="fas fa-map-marked-alt emoji"></i></h2>
+          <p>Welcome, brave technician! This guide is your compass for conquering the HTM150 Labs. Dive into hands-on quests that transform you into a Nuvolo master. Each lab is packed with excitement, challenges, and rewards!</p>
+          <div class="callout">
+            <i class="fas fa-exclamation-triangle"></i> <strong>Pro Tip:</strong> Use the DEV environment only – no real-world chaos here!
+          </div>
+
+          <h3>Quest Overview</h3>
+          <p>Battle through 5 core labs plus an optional side quest. Earn badges, track progress, and level up your skills!</p>
+          
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Quest</th>
+                <th>Mission Brief</th>
+                <th>Time Warp</th>
+                <th>Power Skills</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lab 1: Orientation Quest</td>
+                <td>Navigate the Nuvolo realm and customize your dashboard.</td>
+                <td>30-45 mins</td>
+                <td>Profile magic, favorite spells, search sorcery.</td>
+              </tr>
+              <tr>
+                <td>Lab 2: Work Order Warriors</td>
+                <td>Forge and command work orders like a pro.</td>
+                <td>45-60 mins</td>
+                <td>Order creation, assignment battles, status shifts.</td>
+              </tr>
+              <tr>
+                <td>Optional: Customization Challenge</td>
+                <td>Tailor views and filters for ultimate efficiency.</td>
+                <td>20-30 mins</td>
+                <td>Column wizardry, filter mastery.</td>
+              </tr>
+              <tr>
+                <td>Lab 3: PM Power-Up</td>
+                <td>Master preventative maintenance and escalations.</td>
+                <td>45-60 mins</td>
+                <td>PM forging, upgrade rituals, tracking charms.</td>
+              </tr>
+              <tr>
+                <td>Lab 4: Asset Adventure</td>
+                <td>Explore and manage assets in the wild.</td>
+                <td>30-45 mins</td>
+                <td>Asset hunting, global searches, detail dives.</td>
+              </tr>
+              <tr>
+                <td>Lab 5: Capstone Conquest</td>
+                <td>Ultimate test: Combine all powers!</td>
+                <td>60-90 mins</td>
+                <td>All skills unleashed.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Launch Your Quest</h3>
+          <div class="accordion" id="guideAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                  Access Nuvolo Realm <i class="fas fa-door-open"></i>
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#guideAccordion">
+                <div class="accordion-body">
+                  Portal: <a href="https://vaoittest.servicenowservices.com">vaoittest.servicenowservices.com</a>. Sign in with VA.gov credentials.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                  Set Up YourHTM Base <i class="fas fa-campground"></i>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                <div class="accordion-body">
+                  Base: <a href="https://vaoittest.servicenowservices.com/htm">vaoittest.servicenowservices.com/htm</a>. Configure VISN, Facility, etc.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                  Navigation Tips <i class="fas fa-compass"></i>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                <div class="accordion-body">
+                  Use tabs above to switch quests. Track progress with the bar. Click images to zoom!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Hero Prerequisites</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Web browser basics</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> VA.gov account</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> ServiceNow intro (bonus)</li>
+          </ul>
+
+          <h3>Victory Tips</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fas fa-lightbulb text-warning"></i> Explore freely – use History to rewind!</li>
+            <li class="list-group-item"><i class="fas fa-pencil-alt"></i> Jot notes in inputs for glory.</li>
+            <li class="list-group-item"><i class="fas fa-wrench"></i> Stuck? Global search saves the day.</li>
+            <li class="list-group-item"><i class="fas fa-magic"></i> Hypotheticals are your playground.</li>
+          </ul>
+
+          <div class="callout">
+            <i class="fas fa-star"></i> <strong>Power Move:</strong> Pin favorites and dashboard for instant access!
+          </div>
+
+          <h3>Treasure Trove</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="https://example.com/htm-nuvolo-guide">Nuvolo Technician Codex</a></li>
+            <li class="list-group-item"><a href="https://example.com/release-notices">Release Scrolls</a></li>
+            <li class="list-group-item">Summon your VISN Lead for aid</li>
+            <li class="list-group-item">Knowledge Articles in Nuvolo</li>
+          </ul>
+
+          <p>Ready to conquer? Select a lab tab and begin! <i class="fas fa-trophy emoji"></i></p>
+        </div>
+      </div>
+
+      <div class="tab-pane fade lab-section" id="lab1" role="tabpanel">
+        <div class="card">
+          <h2>Lab 1: Orientation Quest <i class="fas fa-compass emoji"></i></h2>
+          <p>Embark on your first adventure: Master navigation and customize your Nuvolo realm! <span class="badge bg-success">Level 1</span></p>
+
+          <div class="accordion" id="lab1Accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab1Part1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab1Part1">
+                  Part 1: Forge Favorites <i class="fas fa-star"></i>
+                </button>
+              </h2>
+              <div id="collapseLab1Part1" class="accordion-collapse collapse show" data-bs-parent="#lab1Accordion">
+                <div class="accordion-body">
+                  <p>Unlock quick access to essential modules. Pin 'em like treasures!</p>
+                  <ol>
+                    <li>Enter the portal: <a href="https://vaoittest.servicenowservices.com">vaoittest.servicenowservices.com</a> <i class="fas fa-sign-in-alt"></i></li>
+                    <li>When prompted, select your VA.gov account to sign in</li>
+                    <li>Upon login, confirm you see the following banner at the top of your screen (it may be pink or yellow): <img src="Lab-Images/Lab 1-1.3.png" alt="Lab 1, Step 1.3"></li>
+                    <li>Select the Profile Icon in the top right corner of your browser <img src="Lab-Images/Lab1-1.4.png" alt="Lab 1, Step 1.4"></li>
+                    <li>Confirm you see the following list (it should have your name, not Kevin Jeter): <img src="Lab-Images/Lab1-1.5.png" alt="Lab 1, Step 1.5"></li>
+                    <li>Select “Profile” <img src="Lab-Images/Lab1-1.6.png" alt="Lab 1, Step 1.6"></li>
+                    <li>Once you have selected “Profile” you can confirm all of your information is accurate <img src="Lab-Images/Lab1-1.7.png" alt="Lab 1, Step 1.7"></li>
+                    <li>Now click on your Profile Icon again </li>
+                    <li>Select "Preferences" from the dropdown list <img src="Lab-Images/Lab1-1.8.png" alt="Lab 1, Step 1.8"></li>
+                    <li>Once you have selected “Preferences” you can adjust user setting to your preferences and desires <img src="Lab-Images/Lab1-1.9.png" alt="Lab 1, Step 1.9"></li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab1Part1', 'Navigator Badge')">Complete Part 1 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab1Part2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab1Part2">
+                  Part 2: Setting up Your Ward <i class="fas fa-map-pin"></i>
+                </button>
+              </h2>
+              <div id="collapseLab1Part2" class="accordion-collapse collapse" data-bs-parent="#lab1Accordion">
+                <div class="accordion-body">
+                  <p>When work orders are dynamically assigned, it is based on your Ward. We'll need to make sure this is updated and accurate.</p>
+                  <ol>
+                    <li> Navigate to yourHTM at <a href="https://vaoittest.servicenowservices.com/htm">https://vaoittest.servicenowservices.com/htm</a></li>
+                    <li> Upon login, select "Set My Filters" <img src="Lab-Images/Lab1-2.1.png" alt="Lab 1, Step 2.1"></li>
+                    <li> You'll see 2 required fields that need to be completed: your VISN and Facility. Also fill in details for "Campus" and "Building." After selecting the appropriate options, click "Submit." <img src="Lab-Images/Lab1-2.2.png" alt="Lab 1, Step 2.2"></li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab1Part2', 'Ward Master Badge')">Complete Part 2 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab1Part3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab1Part3">
+                  Part 3: Setting Up & Personalizing your Favorites <i class="fas fa-heart"></i>
+                </button>
+              </h2>
+              <div id="collapseLab1Part3" class="accordion-collapse collapse" data-bs-parent="#lab1Accordion">
+                <div class="accordion-body">
+                  <p>Let's navigate back to our Nuvolo interface and get things set-up for day-to-day work.</p>
+                  <p>We will also show you how to edit your Favorites Bar to make it more personalized and easier to use.</p>
+                  <ol>
+                    <li>At the top left corner of your browser, select “All” <img src="Lab-Images/Lab1-3.1.png" alt="Lab 1, Step 3.1"></li>
+                    <li>In the dropdown list, type in “Clinical Asset Management” into your Filter bar If you are taking the Nuvolo Manager Training, you should repeat these steps for “Clinical Asset Management Admin”: <img src="Lab-Images/Lab1-3.2.png" alt="Lab 1, Step 3.2"></li>
+                    <li>Hover your mouse over “Clinical Asset Management”</li>
+                    <li>Click the star icon to the right of “Clinical Asset Management." Select "Done": <img src="Lab-Images/Lab1-3.3.png" alt="Lab 1, Step 3.3"></li>
+                    <li>At the top left corner of your browser, select "Favorites" </li>
+                    <li>Confirm your “Favorites” menu contains “Clinical Asset Management” <img src="Lab-Images/Lab1-3.4.png" alt="Lab 1, Step 3.4"></li>
+                    <li>Select the pin icon to pin your Favorites bar <img src="Lab-Images/Lab1-3.5.png" alt="Lab 1, Step 3.5"></li>
+                    <li>Reference your Favorites Bar and expand “Clinical Asset Management” by clicking on the arrow on the left side of its name <img src="Lab-Images/Lab1-3.6.png" alt="Lab 1, Step 3.6"></li>
+                    <li>We don't need all of the items in Clinical Asset Management. Let's practice removing a favorite. First, scroll down the list until you see “Emergency Events & Contacts” </li>
+                    <li>Hover your mouse over the name "Emergency Events & Contacts" and click the "X" to remove it from your Favorites Bar. <img src="Lab-Images/Lab1-3.7.png" alt="Favorites bar expanded to show Emergency Events & Contacts, with X icon next to it"></li>
+                    <li>You will see the following pop up, click "Remove" to confirm the removal from your Favorites Bar. <img src="Lab-Images/Lab1-3.8.png" alt="Remove favorite confirmation popup with Remove and Cancel buttons"></li>
+                    <li>That module will no longer be found in your Favorites Bar. If you ever need to reference it, you can find it in the "All" Bar. </li>
+                    <li>We can clean up our Favorites bar in a more efficient way. Click the pencil and notepad icon at the top of your Favorites Bar to edit your favorites. <img src="Lab-Images/Lab1-3.9.png" alt="Favorites bar with edit icon (pencil and notepad) highlighted"></li>
+                    <li>Here we can customize icon, color, and remove favorites much more efficiently. Press the small "x"s to quickly remove the following items from your Favorites Bar:
+                      <ol type="a">
+                        <li>External Companies</li>
+                        <li>Transfer Orders</li>
+                        <li>Purchase Requisitions</li>
+                        <li>Contracts</li>
+                        <li>Surveys</li>
+                        <li>Knowledge</li>
+                        <li>Work Projects</li>
+                      </ol>
+                      <img src = "Lab-Images/Lab1-3.10.png" alt="Favorites bar in edit mode with X icons next to each favorite">
+                    </li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab1Part3', 'Favorites Pro Badge')">Complete Part 3 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab1Part4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab1Part4">
+                  Part 4: Tools and Shortcuts <i class="fas fa-tools"></i>
+                </button>
+              </h2>
+              <div id="collapseLab1Part4" class="accordion-collapse collapse" data-bs-parent="#lab1Accordion">
+                <div class="accordion-body">
+                  <p>We've covered how to navigate Nuvolo, access your preferences, view your profile, customize your Favorites, and navigate between pages. Now we want to make sure you can quickly and efficiently use Nuvolo. This part will focus on some tips and tricks to ensure that you are maximizing your time while using Nuvolo.</p>
+                  <ol>
+                    <li>First and foremost, let's use the Search Bar. We'll start with the Favorites Search Bar. Type "Work Order" into your Favorites Search Bar. <img src="Lab-Images/Lab1-4.1.png" alt="Favorites Search Bar with 'Work Order' typed, showing matching items like My Work Order Boards, Work Orders, New Work Order, All non-PM, All PM, etc.">
+                      <ol type="a">
+                        <li>NOTE: when using the Favorites Search Bar, you will only see menu items that have been added to your Favorites</li>
+                      </ol>
+                    </li>
+                    <li>Let's use the All-Purpose Search Bar (the Search Bar that doesn't limit you to only Favorites). Click on “All” at the top of your browser and type “Promo Codes” <img src="Lab-Images/Lab1-4.2.png" alt="All-Purpose Search Bar with 'Promo Codes' typed, showing matching items like Promo Codes, Cost Items, Cost Item Categories, etc.">
+                      <ol type="a">
+                        <li>Notice how “Cost Items” was not saved to your Favorites, but you were still able to find it. This All-Purpose Search Bar will allow you to find any menu item or feature even if it has not been saved to your Favorites.</li>
+                      </ol>
+                    </li>
+                    <li>Another extremely useful feature is “History.” At the top of your browser, click on “History.” Confirm you can see the history of pages you’ve visited in Nuvolo, similar to <img src="Lab-Images/Lab1-4.3.png" alt="All-Purpose Search Bar with 'Promo Codes' typed, showing matching items like Promo Codes, Cost Items, Cost Item Categories, etc.">
+                      <ol type="a">
+                        <li>This feature is extremely helpful if you find yourself frequently visiting the same page, Work Order, etc.
+                          <ol type="i">
+                            <li>NOTE: History will look different for each user – it is based on personal navigation history within Nuvolo</li>
+                            <li>NOTE: USE THE HISTORY TAB INSTEAD OF THE BACK BUTTON. Nuvolo doesn't work well if you use the browser back button.</li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </li>
+                    <li>The HTM Nuvolo User Interface Dashboard will be an extremely helpful landing page as you go about your day-to-day work. This Dashboard will display items such as:
+                      <ol type="a">
+                        <li>My approvals</li>
+                        <li>Tickets assigned to me</li>
+                        <li>My team's work</li>
+                        <li>Tickets for me</li>
+                      </ol>
+                    </li>
+                    <li>Since this dashboard will have valuable information, unique to you as the user, let's add it to Favorites. Click on "All" at the top left corner of your browser and type "Dashboards." Select "Dashboards" from the dropdown list <img src="Lab-Images/Lab1-4.4.png" alt="HTMUser Dashboard with star icon highlighted in the top bar"></li>
+                    <li>In the Dashboards pane, select "All" and Search "HTM Technician User Interface" <img src="Lab-Images/Lab1-4.5.png" alt="Dashboards pane with 'HTM Technician User Interface' typed in the search bar"></li>
+                    <li>Once you're selected into the Dashboard, select the "Star" icon in the top to add it to your Favorites <img src="Lab-Images/Lab1-4.6.png" alt="HTM Technician User Interface Dashboard with star icon highlighted in the top bar"></li>
+                  </ol>
+                  <p>Okay great, now you've established some easy-to-use shortcuts that will help your navigation with Nuvolo. Next, we want you to use those shortcuts to navigate and answer the following questions. As you complete the next part of the lab, keep in mind that there are typically multiple ways to find something within Nuvolo. For each questions, part of your answer will be HOW you found your answer. Don't forget about features like History, Recent, Favorites, Search Bars, dropdown lists, Dashboards, etc.</p>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab1Part4', 'Shortcut Sage Badge')">Complete Part 4 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab1Part5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab1Part5">
+                  Part 5: Scavenger Hunt <i class="fas fa-search"></i>
+                </button>
+              </h2>
+              <div id="collapseLab1Part5" class="accordion-collapse collapse" data-bs-parent="#lab1Accordion">
+                <div class="accordion-body">
+                  <p>Okay great, so now you’ve followed along as we introduced you to your profile, your preferences, dashboards, your favorites bar, and the most important list you will be using: Clinical Asset Management. Next, I want you to use what you know and your current favorites bar setup to explore Nuvolo and find some features. Answer the questions below by navigating around the site and exploring. Don’t be afraid to ask questions!</p>
+                  <ol>
+                    <li>How can you open a link in a new tab in Nuvolo? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                    <li>Where can you find the HTM Nuvolo Technician Guide? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                    <li>Where can you go to change your time zone? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                    <li>Where can you see a list of all dashboards? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                    <li>Under “Favorites,” where does “Home” take you? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                    <li>Change one of your Favorites to the color purple. <input type="text" placeholder="Describe what you changed or note completion" class="form-control"></li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab1Part5', 'Scavenger Hunter Badge')">Complete Part 5 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade lab-section" id="lab2" role="tabpanel">
+        <div class="card">
+          <h2>Lab 2: Work Orders and Documentation <i class="fas fa-hammer emoji"></i></h2>
+          <p>Level up your work order skills! Create, assign, and document like a warrior. <span class="badge bg-success">Level 2</span></p>
+
+          <div class="accordion" id="lab2Accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab2Part1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab2Part1">
+                  Part 1: Introduction to Work Orders <i class="fas fa-book-open"></i>
+                </button>
+              </h2>
+              <div id="collapseLab2Part1" class="accordion-collapse collapse show" data-bs-parent="#lab2Accordion">
+                <div class="accordion-body">
+                  <p>Now that you have some familiarity with Nuvolo and its User Interface, we can move on to one of the most utilized aspects of the system: Work Orders. Work Orders in Nuvolo serve as the central mechanism for tracking, managing, and documenting maintenance activities on medical equipment. Whether it’s scheduled preventive maintenance (PM), corrective repair, or incoming inspection, each task is initiated and recorded through a work order. Nuvolo provides a standardized digital platform, integrated with the VA’s ServiceNow system, that helps biomedical engineers and technicians capture essential details such as equipment ID, location, service dates, labor time, and parts used. This ensures regulatory compliance, accurate performance metrics, and consistent communication across facilities. In short, work orders in Nuvolo are the backbone of the VA’s equipment lifecycle management, ensuring safe, reliable operation of medical devices across the healthcare system.</p>
+                  <ol>
+                    <li>Reference your pinned Favorites Bar on the left-hand side of your browser and expand "Clinical Asset Management" if it is not already expanded <img src="Lab-Images/Lab2-1.1.png" alt="Screenshot of Favorites Bar showing Home, Clinical Asset Management, Clinical Asset Management Admin, Self-Service - Dashboards, ITIL User Dashboard"></li>
+                    <li>Scroll down the list until you see “Work Orders” and expand the list (there may be two, select the second one if that is the case) <img src="Lab-Images/Lab2-1.2.png" alt="Screenshot of Favorites Bar with Clinical Asset Management expanded to show Work Orders sub-list"></li>
+                    <p>As you can see in this sub-list, you are able to handle all Work Order matters within this list. You have the ability to view all PM and non-PM Work Orders, view Open/Pending Work Orders, view specific Work Orders assigned to you, and view Work Orders assigned to your group. Additionally, you have the ability to create a new Work Order.</p>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab2Part1', 'Work Order Intro Badge')">Complete Part 1 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab2Part2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab2Part2">
+                  Part 2: Creating a New Work Order <i class="fas fa-plus"></i>
+                </button>
+              </h2>
+              <div id="collapseLab2Part2" class="accordion-collapse collapse" data-bs-parent="#lab2Accordion">
+                <div class="accordion-body">
+                  <p>Now we will dive into the steps that you need to take to create a Work Order. We will only be highlighting the most important or required portions of the Work Order you will need to complete. However, when going through the lab, please take the time to complete all of the fields within the Work Order form. It will help your confidence in using the system and provide more detailed Work Orders in the future!</p>
+                  <ol>
+                    <li>Select “New Work Order” <img src="Lab-Images/Lab2-2.1.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>Let's familiarize ourselves with some of the required fields within a Work Order</li>
+                    <li>Select a Work Order Type using the magnifying glass icon <img src="Lab-Images/Lab2-2.2.png" alt="Screenshot of New Work Order form highlighting the Work Order Type field"></li>
+                    <li>Select an Asset using the magnifying glass icon <img src="Lab-Images/Lab2-2.3.png" alt="Screenshot of New Work Order form highlighting the Asset field"></li>
+                    <li>Select and Asset Type using the magnifying glass icon <img src="Lab-Images/Lab2-2.4.png" alt="Screenshot of New Work Order form highlighting the Asset Type field"></li>
+                    <li>Select a Priority level <img src="Lab-Images/Lab2-2.5.png" alt="Screenshot of New Work Order form highlighting the Priority field"></li>
+                    <li>Write a brief Work Order Summary <img src="Lab-Images/Lab2-2.6.png" alt="Screenshot of New Work Order form highlighting the Work Order Summary field"></li>
+                  </ol>
+                  <p>These are the required fields that you must complete prior to moving to the next step of the Work Order. With that in mind, let's dive in and write an entire Work Order. Provide as much detail as possible – the expectation is that you fill out every field, not just the required ones. The extra detail is crucial for proper documentation.</p>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab2Part2', 'Order Creator Badge')">Complete Part 2 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab2Part3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab2Part3">
+                  Part 3: Create Your Own Work Order <i class="fas fa-pen"></i>
+                </button>
+              </h2>
+              <div id="collapseLab2Part3" class="accordion-collapse collapse" data-bs-parent="#lab2Accordion">
+                <div class="accordion-body">
+                  <ol>
+                    <li>Create your own work order. This Work Order is <strong>completely hypothetical!</strong> Have fun with it, and use it as an opportunity to familiarize yourself with the Work Order Document. Document the following information and be prepared to share with the class:
+                      <ol type="a">
+                        <li>Due Date</li>
+                        <li>Number</li>
+                        <li>Work Order Type</li>
+                        <li>Asset – should be asset-based workorder
+                          <ol type="i">
+                            <li>Show the magnifying glass next to the “Asset” so they can filter things down</li>
+                          </ol>
+                        </li>
+                        <li>Asset Type – this auto populates when you select the asset!</li>
+                        <li>Priority</li>
+                        <li>Work Order Summary</li>
+                        <li>Brief Description</li>
+                      </ol>
+                    </li>
+                    <li>Next, the Work Order needs to be assigned to a technician. Select “Pending Assignment” once all of your Work Order fields are complete
+                      <ol type="a">
+                        <li>If you double-click on the “Ready for Work”, it automatically moves it to the next state and saves</li>
+                      </ol>
+                    </li>
+                    <li>Once the new page has loaded, explore the page and find the text field labeled “Assigned To.” Using this text field, assign yourself as the technician for this Work Order.</li>
+                    <li>Once you have assigned yourself as the technician, select “Ready for Work”</li>
+                    <li>Now select “Save” <img src="Lab-Images/Lab2-3.1.png" alt="Screenshot of Work Order form with Save button highlighted"></li>
+                  </ol>
+                  <p>Congratulations! You have just created your first Nuvolo Work Order and assigned a technician to perform the work. You might be thinking, “Great, but where can someone go to view the Work Order that was just created?” Well today is your luck day – now we are going to explore how to view an open/existing work order!</p>
+                  <li>Let's record the Work Order #:  <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                     <img src="Lab-Images/Lab2-3.2.png" alt="Screenshot of Work Order form highlighting the Work Order Number field"></li>
+                   <li>Let's record the Work Order Summary:  <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                     <img src="Lab-Images/Lab2-3.3.png" alt="Screenshot of Work Order form highlighting the Work Order Number field"></li>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab2Part3', 'Work Order Wizard Badge')">Complete Part 3 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade lab-section" id="optional" role="tabpanel">
+        <div class="card">
+          <h2>Optional Lab: Customizing Columns in List View <i class="fas fa-paint-brush emoji"></i></h2>
+          <p>Side quest: Personalize your views for max efficiency! <span class="badge bg-warning">Bonus Level</span></p>
+
+          <div class="accordion" id="optionalAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="optionalIntro">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOptionalIntro">
+                  Introduction to Customizing Columns <i class="fas fa-info-circle"></i>
+                </button>
+              </h2>
+              <div id="collapseOptionalIntro" class="accordion-collapse collapse show" data-bs-parent="#optionalAccordion">
+                <div class="accordion-body">
+                  <p>In Nuvolo, the List View is a powerful tool that allows users to view and manage records efficiently. One key feature of the List View is customizing columns. Customizing columns allows users to tailor the List View to their preferences by adding, removing, or rearranging columns to display the most pertinent data for their tasks.</p>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'optionalIntro', 'Column Customizer Badge')">Complete Intro <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="optionalPart1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOptionalPart1">
+                  Customizing Columns in List View <i class="fas fa-table"></i>
+                </button>
+              </h2>
+              <div id="collapseOptionalPart1" class="accordion-collapse collapse" data-bs-parent="#optionalAccordion">
+                <div class="accordion-body">
+                  <ol>
+                    <li>Navigate to the Work Orders "All PM" <img src="Lab-Images/LabOptional_1.1.png" alt="Screenshot highlighting 'All PM' in the Work Orders sub-list"></li>
+                    <li>In the List View, click on the Gear Icon in the top right corner. <img src="Lab-Images/LabOptional_1.2.png" alt="Screenshot of List View with Gear Icon highlighted"></li>
+                    <li>From here, we can move columns from Available to Selected or vice versa. We can also rearrange the order of the columns. <img src="Lab-Images/LabOptional_1.3.png" alt="Screenshot of Column Customization dialog with Available and Selected columns"></li>
+                    <li>Let's practice moving some columns. 
+                      <ol type="a">
+                        <li>Move "Asset.Owning Department", "Assignment Group", and all "Work Location" items from Available to Selected. Hint: if you hold down "Ctrl" you can select multiple items at once. <img src="Lab-Images/LabOptional_1.4.png" alt="Screenshot of Column Customization dialog showing multiple columns selected"></li>
+                        <li>Move "Due Date", "Actual Start", and "Initiated from" from Available to Selected <img src="Lab-Images/LabOptional_1.5.png" alt="Screenshot of Column Customization dialog showing multiple columns selected"></li>
+                        <li>Rearrange the order so that "Due Date" appears before "Assigned To" <img src="Lab-Images/LabOptional_1.6.png" alt="Screenshot of Column Customization dialog showing Due Date moved before Assigned To"></li>
+                      </ol>
+                    </li> 
+                    <li>Click "Ok" to update the List View with your customized column settings. <img src="Lab-Images/LabOptional_1.7.png" alt="Screenshot of Column Customization dialog with Ok button highlighted"></li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'optionalPart1', 'List View Artist Badge')">Complete Customizing <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="optionalPart2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOptionalPart2">
+                  Filtering Your Lists <i class="fas fa-filter"></i>
+                </button>
+              </h2>
+              <div id="collapseOptionalPart2" class="accordion-collapse collapse" data-bs-parent="#optionalAccordion">
+                <div class="accordion-body">
+                  <p>Now that you have customized your columns, let's practice filtering the List View to find specific records.</p>
+                  <ol>
+                    <li>The first way we'll practice is with the column open text searches. In the "Work Order Type" column, type in "Maintenance" and press Enter. <img src="Lab-Images/LabOptional_2.1.png" alt="Screenshot of List View with Work Order Type being searched"></li>
+                    <li>Note that you have No Records to Display. This is because the search is looking for a "Starts with" match. We can verify this by clicking the Funnel Icon in the top left corner. <img src="Lab-Images/LabOptional_2.2.png" alt="Screenshot of Filter dropdown menu with Work Order Type options"></li>
+                    <li>To change this, we want to search for "Contains" instead of "Starts with". In the Work Order Type filter, include an * at the beginning and end of "Maintenance" so it reads "*Maintenance*" and press Enter. <img src="Lab-Images/LabOptional_2.3.png" alt="Screenshot of Filter dialog with Apply button highlighted"></li>
+                    <li>Let's verify this in the filters one more time to see how it changed. <img src="Lab-Images/LabOptional_2.4.png" alt="Screenshot of Filter dropdown menu with Work Order Type options showing Contains filter"></li>
+                    <li>Another way to filter your lists is by using the "AND" and "OR" buttons. Let's practice this now. Click the "AND" button next to the existing filter. Notice how an extra line appears for you to add another condition. <img src="Lab-Images/LabOptional_2.5.png" alt="Screenshot of List View with AND button highlighted"></li>
+                    <li>We can filter on ANY field, even if it's not in the visible fields. For this final step, use the filters to find the work order you created in Lab 2. What filters were most useful to use? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'optionalPart2', 'Filter Guru Badge')">Complete Filtering <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade lab-section" id="lab3" role="tabpanel">
+        <div class="card">
+          <h2>Lab 3: Preventative Maintenance <i class="fas fa-shield-alt emoji"></i></h2>
+          <p>Power up your PM skills and learn to escalate like a boss! <span class="badge bg-success">Level 3</span></p>
+
+          <div class="accordion" id="lab3Accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab3Part1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab3Part1">
+                  Part 1: Introduction to Preventative Maintenance <i class="fas fa-info-circle"></i>
+                </button>
+              </h2>
+              <div id="collapseLab3Part1" class="accordion-collapse collapse show" data-bs-parent="#lab3Accordion">
+                <div class="accordion-body">
+                  <p>The good news about Preventative Maintenance within Nuvolo is that it is very similar to writing any style of Work Order! You may actually notice a large amount of overlap between this lab and Lab 2. You will have another chance create a Work Order; except this time we will exclusively be focusing on a Preventative Maintenance Work Order. Keep in mind, most of your PM Work Orders will NOT be manually created. But we will manually create one today to reinforce Work Order training, and to provide you insight into the details that make up a PM Work Order.</p>
+                  <ol>
+                    <li>Reference your Favorites Bar and in the Search Bar, type "Work Orders" <img src="Lab-Images/Lab3-1.1.png" alt="Screenshot of Favorites Search Bar with 'Work Orders' typed, showing My Work Order Boards, Work Orders, New Work Order, All non-PM, All PM, etc."></li>
+                    <li>Select “New Work Order” <img src="Lab-Images/Lab3-1.2.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>This page should look familiar! We are back on a page that allows us to create a new work order. Reference the “Work Order Type” text field and select the magnifying glass icon <img src="Lab-Images/Lab3-1.3.png" alt="Screenshot highlighting"></li>
+                    <li>For this work order, select “Preventative Maintenance” <img src="Lab-Images/Lab3-1.4.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>From here, complete the following steps to finish Part 1 of the Lab:
+                      <ol type="a">
+                        <li>Select an Asset Type of your choosing</li>
+                        <li>Select a Due Date</li>
+                        <li>Select a Priority</li>
+                        <li>Complete the “Work Order Summary”</li>
+                        <li>Record the “Assignment Group” that gets generated</li>
+                        <li>Record the “Assigned To” technician that gets generated</li>
+                        <li>Record the Work Order Number</li>
+                      </ol>
+                    </li>
+                    <li>Congratulations! You have just created a Draft of a manually generated Preventative Maintenance Work Order. We’re far from done though… next, we need to be able to find and access this Work Order.</li>
+                  </ol>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab3Part1', 'PM Intro Badge')">Complete Part 1 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab3Part2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab3Part2">
+                  Part 2: Finding and Accessing Active PM Work Orders <i class="fas fa-search"></i>
+                </button>
+              </h2>
+              <div id="collapseLab3Part2" class="accordion-collapse collapse" data-bs-parent="#lab3Accordion">
+                <div class="accordion-body">
+                  <ol>
+                    <li>Reference your Favorites Bar. In the Search Bar, type “PM” <img src="Lab-Images/Lab3-2.1.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>Select “All-PM” <img src="Lab-Images/Lab3-2.2.png" alt="Screenshot highlighting 'All PM' in the Work Orders sub-list"></li>
+                    <li>Let’s take a look at the filters that come pre-assigned on the “All PM” page. <img src="Lab-Images/Lab3-2.3.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list">
+                      <p>These conditions are pre-assigned to this tab to help you easily find data and present you PM Work Orders based on your assigned role, facility, user permissions, etc.</p>
+                    </li>
+                    <li>To reference the specific PM Work Order you just created in step one, let's add a filter. Select the “AND” button <img src="Lab-Images/Lab3-2.4.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>Configure your next filter to read as “Assigned To... is” <img src="Lab-Images/Lab3-2.5.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>Use the magnifying glass icon to find the name of the technician that the Work Order was assigned to <img src="Lab-Images/Lab3-2.6.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>The PM Work Order you created earlier will be in this list (if you assigned it to yourself!)</li>
+                    <li>Let's record the Work Order #: <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                    <li>One tip for easy navigation is the Global Search. If you remember or have a work order number on hand, it's alot easier to just search for it directly rather than applying filters. Let's try that now.</li>
+                    <li>At the top of your browser, locate the Global Search Bar <img src="Lab-Images/Lab3-2.7.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                    <li>Type in the exact Work Order Number you had created in Part 1. You can see it instantly appears in the dropdown list <img src="Lab-Images/Lab3-2.8.png" alt="Screenshot highlighting 'New Work Order' in the Work Orders sub-list"></li>
+                  </ol>
+                  <p>Now that we've created a PM Work Order and discovered how to find them, let's recap some key information.</p>
+                  <ul>
+                    <li>In general, you will not need to manually create PM Work Orders. We manually created a PM Work Order in this lab to allow you more hands-on experience with Work Orders and to have a specific reference for follow-on lab use.</li>
+                    <li>Filters are a great way to find specific batches of data, to include Work Orders. Selecting the correct tab (in this instance, “All PM”) will come with pre-assigned filters to automatically show you data that applies to your specific Nuvolo account. If you want to alter the data that is being shown, feel free to play around with filters to meet your specific needs.</li>
+                    <li>The Global Search Function is the single best way to find specific data within Nuvolo. If you have a Work Order, Asset, etc. you can use the Global Search Function to reference that item</li>
+                  </ul>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab3Part2', 'PM Finder Badge')">Complete Part 2 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab3Part3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab3Part3">
+                  Part 3: What if Preventative Maintenance turns into Corrective Maintenance? <i class="fas fa-level-up-alt"></i>
+                </button>
+              </h2>
+              <div id="collapseLab3Part3" class="accordion-collapse collapse" data-bs-parent="#lab3Accordion">
+                <div class="accordion-body">
+                  <p>Okay close your eyes and picture this: You are scheduled to complete standard Preventative Maintenance on a piece of equipment. You start your PM check and realize that the equipment is broken and will require more work than the standard PM. What should you do?</p>
+                  <ol>
+                    <li>Ignore the problem</li>
+                    <li>Upgrade the PM Work Order to a Corrective Maintenance Work Order</li>
+                  </ol>
+                  <p>Hopefully you selected number 2!</p>
+                  <p>Let's walk through that scenario. Reopen the PM Work Order you created in Part 1 and Part 2 of this lab.</p>
+                  <ol>
+                    <li>Let's say work is In Progress for a PM Work Order. <img alt="Screenshot of Work Order page in Work in Progress state for a PM Work Order" src="Lab-Images/Lab3-3.1.png"></li>
+                    <li>There are two ways to elevate a PM Work Order to a CM Work Order. <b>Do NOT use the "Create CM Work Order" button at the top of the page.</b> Instead, we'll close the Work Order with the Resolution Code "Correct Action Required." This will automatically generate a CM Work Order AND close out the PM Work Order</li>
+                    <li>Scroll to the bottom of the page where you can set the "Resolution Code", "Service Complete Date", and "Resolution Detail". Fill in the "Service Complete Date" and add in some Resolution Details. <img alt="Screenshot highlighting 'Related Links' section at the bottom of the Work Order page" src="Lab-Images/Lab3-3.2.png"></li>
+                    <li>Select the "Resolution Code" dropdown and select "Corrective Action Required" <img alt="Screenshot highlighting 'Resolution Code' dropdown on Work Order page" src="Lab-Images/Lab3-3.3.png"></li>
+                    <li>We must record Parts/Services prior to moving the work order into Pending Documentation. To do so, scroll down and select "New Parts/Services" <img alt="Screenshot highlighting 'Parts/Services' related list on Work Order page" src="Lab-Images/Lab3-3.9.png"></li>
+                    <li>In Work Duration, fill in 1 hour, select save, then select the back button within the workorder. <img alt="Screenshot of Work Duration form with 1 hour filled in" src="Lab-Images/Lab3-3.10.png"></li>
+                    <li>Next, double-click "Pending Documentation". <img alt="Screenshot of Work Order page with Pending Documentation state highlighted" src="Lab-Images/Lab3-3.4.png"></li>
+                    <li>Once the Work Order is in Pending Documentation, "Pending Review" will become an option. Double click on "Pending Review" to move the Work Order to that state. <img alt="Screenshot of Work Order page with Pending Review state highlighted" src="Lab-Images/Lab3-3.11.png"></li>
+                    <li>Notice that once you do that, you'll get a confirmation message at the top of the screen that reads "Automatically moving to Ready to Work". This means that a Corrective Maintenance Work Order has been created! <img alt="Screenshot of Work Order page with confirmation message at the top" src="Lab-Images/Lab3-3.12.png"></li>
+                    <li>Let's find our CM Work Order that was just created. Scroll to the bottom of the page and click "Load Related Lists" <img alt="Screenshot of Work Order page with Load Related Lists button highlighted" src="Lab-Images/Lab3-3.13.png"></li>
+                    <li>Select the "Work Order History" tab and you'll see the CM Work Order that was just created! Click on the number in order to view it. <img alt="Screenshot of Work Order page with Work Order History related list highlighted" src="Lab-Images/Lab3-3.14.png"></li>
+                  </ol>
+                  <p>Now let’s say this entire Work Order has become a very high-visibility issue. As the technician, supervisor, etc. you want the ability to specifically follow this Work Order. It started as a standard PM, and now it’s a troublesome CM issue. You need continuous updates on this Work order.</p>
+                  <ol>
+                    <li>Reference the top of your page</li>
+                    <li>Select the “Follow” button <img src="Lab-Images/Lab3-3.5.png" alt="Screenshot of Work Order page with Follow button highlighted"></li>
+                    <li>You will get the following message on your Work Order page <img src="Lab-Images/Lab3-3.6.png" alt="Screenshot of Work Order page with Follow button highlighted"></li>
+                    <li>Now let's reference your notifications. Select the notifications icon (the bell) <img src="Lab-Images/Lab3-3.7.png" alt="Screenshot of Work Order page with Follow button highlighted"></li>
+                    <li>Use the settings icon to customize notifications as desired. <img alt="Screenshot of notifications dropdown tab" src="Lab-Images/Lab3-3.8.png"></li>
+                  </ol>
+                  <p>Okay, maybe that felt like a lot! But now you know how to</p>
+                  <ul>
+                    <li>Manually generate a PM Work Order</li>
+                    <li>Find and filter for PM Work Orders (and any type of Work Order)</li>
+                    <li>Search for specific Work Orders via Global Search Function</li>
+                    <li>Elevate a PM Work Order to a CM Work Order</li>
+                    <li>Follow and track a Work Order</li>
+                  </ul>
+                  <p>You're well on your way to being a Nuvolo pro!</p>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab3Part3', 'Escalation Expert Badge')">Complete Part 3 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade lab-section" id="lab4" role="tabpanel">
+        <div class="card">
+          <h2>Lab 4: Asset Management <i class="fas fa-box-open emoji"></i></h2>
+          <p>Adventure through asset onboarding and searching! <span class="badge bg-success">Level 4</span></p>
+
+          <div class="accordion" id="lab4Accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab4Part1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab4Part1">
+                  Part 1: Finding Equipment and Asset Management Familiarization <i class="fas fa-search"></i>
+                </button>
+              </h2>
+              <div id="collapseLab4Part1" class="accordion-collapse collapse show" data-bs-parent="#lab4Accordion">
+                <div class="accordion-body">
+                  <p>Mostly everything we've talked about so far has been centered around Work Orders – how to create them, how to view them, how to upgrade them, etc. You're probably tired of talking about Work Orders. So let's move on to another core pillar of your day-to-day Nuvolo use: Asset Management. Asset Management is all about onboarding new medical devices, new parts, and new asset types. In this lab, we're going to walk through how to onboard a new device, how to reference that device, and any other fundamental techniques that will help you with asset management.</p>
+                  <ol>
+                    <li>Much like any other task on Nuvolo, let's start by searching in the "All". Search for "Models" and select it from the dropdown. <img src="Lab-Images/Lab4-1.1.png" alt="Screenshot of All-Purpose Search Bar with 'Models' typed, showing Models, Model Categories, Model Manufacturers, etc."></li>
+                    <li>You should see a list of data containing models, manufacturers, model numbers, and more. You'll see there are 516,000+ results! <img alt="Screenshot of Models list page showing columns like Model, Manufacturer, Model Number, etc." src="Lab-Images/Lab4-1.2.png"></li>
+                    <li>Here is where our filter button comes in handy. Click on the filter button at the top of the page</li>
+                    <li>Let’s say you only want to see equipment from a specific manufacturer – let’s assign filters to make that happen. Assign your filter to read: “Manufacturer” and “is”</li>
+                    <li>You now can look up equipment based solely on manufacturer. Let’s take a second to play around with these filter options. Explore the list of options and familiarize yourself with helpful data filters.</li>
+                    <li>Let’s quickly put your data filtering abilities to the test. Perform the following steps and record the Equipment Number
+                      <ol type="a">
+                        <li>You want to find a specific piece of equipment and you know the following information:
+                          <ol type="i">
+                            <li>Asset Type: CARTS: MEDICATION/STORAGE: POWERED</li>
+                            <li>Manufacturer: HOWARD MEDICAL</li>
+                            <li>Model Name: PARADIGM</li>
+                            <li>What is the equipment number?</li>
+                          </ol>
+                        </li>
+                      </ol>
+                      <img alt="Screenshot of Models list page showing columns like Model, Manufacturer, Model Number, etc." src="Lab-Images/Lab4-1.3.png">
+                    </li>
+                    <li>You should have gotten the number: CMOD0118262 <img alt="Screenshot of Models list page showing filtered results for CARTS: MEDICATION/STORAGE: POWERED, HOWARD MEDICAL, PARADIGM with Equipment Number CMOD0118262" src="Lab-Images/Lab4-1.4.png"></li>
+                    <li>Now that you have a specific equipment number... let's say you wanted to access this equipment on Nuvolo again, but this time you know the exact equipment number... what feature could you use to directly search it?</li>
+                    <li>I hope you said... Global Search Function! Type in CMOD0118262 into your Global Search Function at the top of your browser</li>
+                    <li>Click "View Results"</li>
+                    <li>You should see the following page: <img src="Lab-Images/Lab4-1.5.png" alt="Screenshot of Global Search Results page showing 1 result for Equipment Number CMOD0118262"></li>
+                    <li>Select the 1 result and you should see the following page: <img src="Lab-Images/Lab4-1.6.png" alt="Screenshot of Equipment page for Equipment Number CMOD0118262"></li>
+                    <li>In this lab, we are only referencing this one particular piece of equipment that I randomly selected. But imagine you reference this page about equipment at your facility. On this page you should be able to see:
+                      <ol type="a">
+                        <li>Equipment Number</li>
+                        <li>Model Name</li>
+                        <li>Manufacturer</li>
+                        <li>Asset Type</li>
+                        <li>ID</li>
+                        <li>Price</li>
+                        <li>Compatibility</li>
+                        <li>Any relevant and useful information you would want to know about any piece of equipment</li>
+                      </ol>
+                    </li>
+                  </ol>
+                  <p>So now you've identified how to filter for different equipment, how to search specific equipment if you have the right number, and familiarized yourself with the functions of an equipment page.</p>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab4Part1', 'Asset Explorer Badge')">Complete Part 1 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade lab-section" id="lab5" role="tabpanel">
+        <div class="card">
+          <h2>Lab 5: Technician Capstone Lab <i class="fas fa-crown emoji"></i></h2>
+          <p>Final boss: Integrate all your powers in epic challenges! <span class="badge bg-success">Level 5</span></p>
+
+          <div class="accordion" id="lab5Accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab5Part1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab5Part1">
+                  Part 1: Customizing your Navigational Experience <i class="fas fa-map"></i>
+                </button>
+              </h2>
+              <div id="collapseLab5Part1" class="accordion-collapse collapse show" data-bs-parent="#lab5Accordion">
+                <div class="accordion-body">
+                  <p>Congratulations on making it to the final lab of the HTM150 Nuvolo Technician Training! This capstone lab is designed to test your knowledge and skills acquired throughout the previous labs. You will be tasked with a series of challenges that simulate real-world scenarios you may encounter as a technician using Nuvolo. This lab will require you to apply your understanding of work orders, asset management, preventative maintenance, and navigation within the Nuvolo system. Be prepared to demonstrate your proficiency in creating, managing, and resolving work orders, as well as effectively utilizing the asset management features. This capstone lab is not only a test of your technical skills but also an opportunity to showcase your problem-solving abilities and attention to detail. Good luck, and remember to leverage all the tools and knowledge you've gained during this training!</p>
+                  <li>Based on what you've learned in Lab 1, customize your Favorites Bar to match the screenshot below. Change your "Home" to be the HTM Nuvolo User Interface Dashboard. <img src="Lab-Images/Lab5-1.1.png" alt="Screenshot of Favorites Bar showing Home, Clinical Asset Management, Clinical Asset Management Admin, Self-Service - Dashboards, ITIL User Dashboard"></li>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab5Part1', 'Navigation Master Badge')">Complete Part 1 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab5Part2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab5Part2">
+                  Part 2: Work Order Creation and Management <i class="fas fa-hammer"></i>
+                </button>
+              </h2>
+              <div id="collapseLab5Part2" class="accordion-collapse collapse" data-bs-parent="#lab5Accordion">
+                <div class="accordion-body">
+                  <li>Create a new Corrective Maintenance Work Order for a hypothetical piece of equipment. Ensure to fill out all required fields and assign the work order to yourself. Once created, change the status of the work order to "In Progress" and then to "Pending Documentation."</li>
+                  <li>Fill out the following fields: <br>
+                    Work Order Number: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Work Order Type: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Asset Type and #: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Priority Level: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Work Order Summary: <input type="text" placeholder="Enter your answer here" class="form-control">
+                  </li>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab5Part2', 'Work Order Conqueror Badge')">Complete Part 2 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab5Part3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab5Part3">
+                  Part 3: Preventative Maintenance Review <i class="fas fa-shield-alt"></i>
+                </button>
+              </h2>
+              <div id="collapseLab5Part3" class="accordion-collapse collapse" data-bs-parent="#lab5Accordion">
+                <div class="accordion-body">
+                  <li>Create a Preventative Maintenance Work Order for a hypothetical piece of equipment. Fill out all required fields and assign the work order to yourself. Once created, change the status of the work order to "In Progress" and then to "Pending Documentation."</li>
+                  <li>Fill out the following fields: <br>
+                    Work Order Number: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Asset Type and #: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Priority Level: <input type="text" placeholder="Enter your answer here" class="form-control"> <br>
+                    Work Order Summary: <input type="text" placeholder="Enter your answer here" class="form-control">
+                  </li>
+                  <li>Elevate the work order to a Corrective Maintenance Work Order by selecting the appropriate Resolution Code and closing out the PM Work Order.</li>
+                  <li>Record the newly created Corrective Maintenance Work Order Number: <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab5Part3', 'PM Hero Badge')">Complete Part 3 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lab5Part4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLab5Part4">
+                  Part 4: Scavenger Hunt <i class="fas fa-treasure-chest"></i>
+                </button>
+              </h2>
+              <div id="collapseLab5Part4" class="accordion-collapse collapse" data-bs-parent="#lab5Accordion">
+                <div class="accordion-body">
+                  <li> What is the link for YourHTM (Nuvolo) SharePoint site? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                  <li> Who is your BESM VISN HTM Lead or Leads? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                  <li> Where can you find Nuvolo Knowledge Articles? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                  <li> What is the link for HTM Nuvolo Release Notices? <input type="text" placeholder="Enter your answer here" class="form-control"></li>
+                  <button class="btn btn-success btn-sm" onclick="markComplete(this, 'lab5Part4', 'Ultimate Scavenger Badge')">Complete Part 4 <i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2026 HTM150 Epic Labs – Powered by xAI <i class="fas fa-heart text-danger"></i></p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.1.0/dist/index.min.js"></script>
   <script>
-    function filterLabs() {
-      const select = document.getElementById('labFilter');
-      const value = select.value;
-      const sections = document.querySelectorAll('.lab-section');
-      sections.forEach(section => {
-        section.classList.toggle('active', section.dataset.lab === value || value === '');
-      });
-    }
-
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('change', () => {
       document.body.classList.toggle('dark', themeToggle.checked);
       document.body.classList.toggle('light', !themeToggle.checked);
     });
+
+    const badges = [
+      'Navigator Badge', 'Ward Master Badge', 'Favorites Pro Badge', 'Shortcut Sage Badge', 'Scavenger Hunter Badge',
+      'Work Order Intro Badge', 'Order Creator Badge', 'Work Order Wizard Badge',
+      'Column Customizer Badge', 'List View Artist Badge', 'Filter Guru Badge',
+      'PM Intro Badge', 'PM Finder Badge', 'Escalation Expert Badge',
+      'Asset Explorer Badge',
+      'Navigation Master Badge', 'Work Order Conqueror Badge', 'PM Hero Badge', 'Ultimate Scavenger Badge'
+    ];
+
+    function markComplete(button, partId, badgeName) {
+      button.style.display = 'none';
+      localStorage.setItem(partId, 'completed');
+      if (badgeName) {
+        localStorage.setItem(badgeName, 'earned');
+      }
+      updateProgress();
+      updateBadges();
+      confettiBlast();
+      alert(`Part completed! You earned the ${badgeName}! 🎉`);
+    }
+
+    function updateProgress() {
+      const totalParts = 19; // Count of all parts across labs
+      let completed = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('lab') || key.startsWith('optional')) {
+          completed++;
+        }
+      }
+      const percent = Math.round((completed / totalParts) * 100);
+      document.getElementById('progress-bar').style.width = `${percent}%`;
+      document.getElementById('progress-bar').innerText = `${percent}% Complete`;
+    }
+
+    function updateBadges() {
+      const collection = document.getElementById('badge-collection');
+      collection.innerHTML = '';
+      badges.forEach(badge => {
+        const item = document.createElement('div');
+        item.classList.add('badge-item');
+        item.innerHTML = `<i class="fas fa-medal"></i> ${badge}`;
+        if (localStorage.getItem(badge) === 'earned') {
+          item.classList.add('earned');
+        }
+        collection.appendChild(item);
+      });
+    }
+
+    function confettiBlast() {
+      const confettiSettings = { target: document.body };
+      const confetti = new ConfettiGenerator(confettiSettings);
+      confetti.render();
+      setTimeout(() => confetti.clear(), 3000);
+    }
+
+    updateProgress();
+    updateBadges();
   </script>
 </body>
-
 </html>
