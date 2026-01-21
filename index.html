@@ -406,39 +406,6 @@
            <img src="Lab-Images/Lab2-3.2.png" alt="Screenshot of Work Order form highlighting the Work Order Number field" style="max-width:100%"></li>
          <li>Let's record the Work Order Summary:  <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
            <img src="Lab-Images/Lab2-3.3.png" alt="Screenshot of Work Order form highlighting the Work Order Number field" style="max-width:100%"></li>
-
-      <h3>Part 4: Viewing an Open Work Order</h3>
-      <ol>
-        <li>Have the documentation easily available from the Work Order you just created, namely, the following:
-          <ol type="a">
-            <li>Number</li>
-            <li>Assigned To</li>
-            <li>Work Order Summary</li>
-          </ol>
-        </li>
-        <li>In your Favorites Bar, select “Open/Pending” under Work Orders
-          <img src="Lab-Images/Lab2-4.1.png" alt="Screenshot highlighting 'Open/Pending' in the Work Orders sub-list" style="max-width:100%">
-        </li>
-        <li>Everyone’s screen will probably look different here. This is due to the fact that everyone may see different data depending on what filters are automatically applied to your account (VISN, Facility, etc.). That’s okay! To ensure you’ve landed on the correct page, at least confirm that the top of your page looks like this:
-          <img alt="Screenshot of the top of the Open/Pending Work Orders page with filter button" src="Lab-Images/Lab2-4.2.png" style="max-width:100%">
-        </li>
-        <li>In that image lies a very important button... any guesses?</li>
-        <li>The filter button! Select the filter button
-          <img alt="Screenshot highlighting the filter button on the Open/Pending Work Orders page" src="Lab-Images/Lab2-4.3.png" style="max-width:100%">
-        </li>
-      </ol>
-      <ol start="6">
-        <li>Try playing around with different filter options to find the Work Order you just created
-          <ol type="a">
-            <li>Hint 1: The Work Order is ACTIVE</li>
-            <li>Hint 2: The Work Order is very easy to find when you filter by WHO it is assigned to</li>
-            <li>Hint 3: Don’t forget to select “Run” after your filters are applied!</li>
-          </ol>
-        </li>
-        <li>Find the Work Order you created and select it by clicking on the Number</li>
-      </ol>
-      <p>Congratulations! You have now successfully created a Work Order, assigned a technician, learned how to apply filters, and found your Work Order.</p>
-      <p>I’m sure there are plenty of questions, so let’s spend some time answering any questions you guys have.</p>
     </section>
 
     <section class="lab-section" data-lab="Optional Lab: Customizing Columns in List View">
@@ -475,6 +442,28 @@
           <img src="Lab-Images/LabOptional_1.7.png" alt="Screenshot of Column Customization dialog with Ok button highlighted" style="max-width:100%">
         </li>
       </ol>
+
+      <h3>Filtering Your Lists</h3>
+      Now that you have customized your columns, let's practice filtering the List View to find specific records. 
+      <ol>
+        <li>The first way we'll practice is with the column open text searches. In the "Work Order Type" column, type in "Maintenance" and press Enter.
+          <img src="Lab-Images/LabOptional_2.1.png" alt="Screenshot of List View with Work Order Type being searched" style="max-width:100%">
+        </li>
+        <li>Note that you have No Records to Display. This is because the search is looking for a "Starts with" match. We can verify this by clicking the Funnel Icon in the top left corner.
+          <img src="Lab-Images/LabOptional_2.2.png" alt="Screenshot of Filter dropdown menu with Work Order Type options" style="max-width:100%">
+        </li>
+        <li>To change this, we want to search for "Contains" instead of "Starts with". In the Work Order Type filter, include an * at the beginning and end of "Maintenance" so it reads "*Maintenance*" and press Enter.
+          <img src="Lab-Images/LabOptional_2.3.png" alt="Screenshot of Filter dialog with Apply button highlighted" style="max-width:100%">
+        </li>
+        <li>Let's verify this in the filters one more time to see how it changed. 
+          <img src="Lab-Images/LabOptional_2.4.png" alt="Screenshot of Filter dropdown menu with Work Order Type options showing Contains filter" style="max-width:100%">
+        </li>
+        <li>Another way to filter your lists is by using the "AND" and "OR" buttons. Let's practice this now. Click the "AND" button next to the existing filter. Notice how an extra line appears for you to add another condition.
+          <img src="Lab-Images/LabOptional_2.5.png" alt="Screenshot of List View with AND button highlighted" style="max-width:100%">
+        </li>
+        <li>We can filter on ANY field, even if it's not in the visible fields. For this final step, use the filters to find the work order you created in Lab 2. What filters were most useful to use? <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+      </ol>
+      
     </section>
 
     <section class="lab-section" data-lab="Lab 3: Preventative Maintenance">
