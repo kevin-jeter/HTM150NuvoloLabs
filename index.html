@@ -124,6 +124,25 @@
 
     .callout { border-left: 4px solid var(--primary); background: var(--table-alt-row-bg); padding: 10px 12px; border-radius: 6px; margin: 10px 0; }
 
+    .banner {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  font-size: 13.5pt;
+  line-height: 1.45;
+  text-align: center;
+  font-weight: 500;
+}
+
+body.dark .banner {
+  background-color: #5c4a00;
+  color: #ffeaa7;
+  border-color: #ffeaa7;
+}
+
     .container { max-width: none; margin: 0; }
 
         input[type="text"],
@@ -166,6 +185,9 @@
   </section>
 
   <main class="container">
+    <div class="banner">
+    Screenshots in these labs may not reflect exactly what you are seeing in your test environment, but the concepts and steps learned in the lectures can still be applied.
+  </div>
     <section class="lab-section active" data-lab="User Guide">
       <h2>User Guide</h2>
       <p>Welcome to the HTM150: Nuvolo for Technicians Labs! This guide is designed to help you navigate through the various labs included in this course. Each lab focuses on a specific aspect of using Nuvolo for biomedical technicians, providing hands-on experience and practical knowledge.</p>
