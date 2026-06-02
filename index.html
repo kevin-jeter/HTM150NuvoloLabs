@@ -190,7 +190,7 @@ body.dark .banner {
   </div>
     <section class="lab-section active" data-lab="User Guide">
       <h2>User Guide</h2>
-      <p>Welcome to the HTM150: Nuvolo for Technicians Labs! This guide is designed to help you navigate through the various labs included in this course. Each lab focuses on a specific aspect of using Nuvolo for biomedical technicians, providing hands-on experience and practical knowledge.</p>
+      <p>Welcome to the HTM150: Nuvolo for Technicians Labs! This guide is designed to help you navigate through the various labs included in this course. Each lab focuses on a specific aspect of using Nuvolo for biomedical technicians, providing hands-on experience and practical knowledge. For the purposes of this course, you’ll be acting as a technician in the Walla Walla facility in Washington. This facility has been using Nuvolo for a few years, and has a lot of available data to use as examples. All your location information will be set to this facility, and your devices and work orders will be pulled from their information.</p>
       <h3>Getting Started</h3>
       <ol>
         <li><strong>Access Nuvolo Development Environment:</strong> Use the DEV environment for all labs. Login via <a href="https://vasubprod1.servicenowservices.com/">https://vasubprod1.servicenowservices.com/</a> with your VA.gov account.</li>
@@ -212,65 +212,88 @@ body.dark .banner {
     <section class="lab-section" data-lab="Lab 1: Orientation and Navigation">
       <h2>Lab 1: Orientation and Navigation</h2>
 
-      <h3>Part 1: Creating Favorites</h3>
-      <p>Many, if not all of the features you will be using will be located under the “Clinical Asset Management” and “Clinical Asset Management Admin” modules. For ease of navigation, we will show you how to favorite and pin those lists, so you always have easy access.</p>
-      <ol>
-        <li>Login to Nuvolo using the following website:
-          <ol type="a">
-            <li><a href="https://vasubprod1.servicenowservices.com/">https://vasubprod1.servicenowservices.com/</a></li>
-          </ol>
-        </li>
-        <li>When prompted, select your VA.gov account to sign in</li>
-        <li>Upon login, confirm you see the following banner at the top of your screen (it may be pink or yellow):
-          <img src="Lab-Images/Lab 1-1.3.png" alt="Lab 1, Step 1.3" style="max-width:100%">
-        </li>
-         <li>Select the Profile Icon in the top right corner of your browser
-          <img src="Lab-Images/Lab1-1.4.png" alt="Lab 1, Step 1.4" style="max-width:100%">
-        </li>
-        <li>Confirm you see the following list (it should have your name, not Kevin Jeter):
-          <img src="Lab-Images/Lab1-1.5.png" alt="Lab 1, Step 1.5" style="max-width:100%">
-        </li>
-        <li>Select “Profile”
-          <img src="Lab-Images/Lab1-1.6.png" alt="Lab 1, Step 1.6" style="max-width:100%">
-        </li>
-        <li>Once you have selected “Profile” you can confirm all of your information is accurate
-          <img src="Lab-Images/Lab1-1.7.png" alt="Lab 1, Step 1.7" style="max-width:100%">
-        </li>
-        <li>Now click on your Profile Icon again </li>
-        <li>Select "Preferences" from the dropdown list 
-          <img src="Lab-Images/Lab1-1.8.png" alt="Lab 1, Step 1.8" style="max-width:100%">
-        </li>
-        <li>Once you have selected “Preferences” you can adjust user settings to your preferences and desires
-          <img src="Lab-Images/Lab1-1.9.png" alt="Lab 1, Step 1.9" style="max-width:100%">
-        </li>
-      </ol>
-
-      <h3>Part 2: Setting up Your Ward</h3>
-      <p>When work orders are dynamically assigned, it is based on your Ward. We'll need to make sure this is updated and accurate.</p>
+      <h3>Part 1: Setting up Your Ward</h3>
+      <p>For the purposes of this course, you’ll be acting as a technician in the Walla Walla facility in Washington. This facility has been using Nuvolo for a few years, and has a lot of available data to use as examples. All your location information will be set to this facility, and your devices and work orders will be pulled from their information.</p>
       <ol>
         <li> Navigate to yourHTM at <a href="https://vasubprod1.servicenowservices.com/htm">https://vasubprod1.servicenowservices.com/htm</a></li>
-      <li> Upon login, select ""Set My Filters"
+      <li> After logging in, you should see a screen like this. Verify that you are in the test environment by the banner that appears along the top of the screen. 
         <img src="Lab-Images/Lab1-2.1.png" alt="Lab 1, Step 2.1" style="max-width:100%">
       </li>
-      <li> You'll see 2 required fields that need to be completed: your VISN and Facility. Also fill in details for "Campus" and "Building." After selecting the appropriate options, click "Submit."
+      <li> Next, click Set My Filters from the top bar. 
         <img src="Lab-Images/Lab1-2.2.png" alt="Lab 1, Step 2.2" style="max-width:100%">
       </li>
+      <li> You’ll be directed to a form with 2 required filters: VISN and Facility. Make sure that your VISN is set to VISN 20, and your facility is set to Walla Walla, WA. We will be using Walla Walla as our example facility for the rest of these labs.
+        <ol type ="a">
+          <li>You’ll notice there are optional Additional Location Filters underneath these required fields. These filters will help narrow down your available devices; however, they are not required. Please leave them blank for now. </li>
+        </ol>
+        <img src="Lab-Images/Lab1-2.3.png" alt="Lab 1, Step 2.3" style="max-width:100%">
+      </li>
+      <li>Once your screen matches the above screenshot, click Submit.</li>
+      Congratulations, you have successfully set up your ward! Feel free to close this page. We’ll come back to yourHTM in a later lab.
       </ol>
-      <h3>Part 3: Setting Up & Personalizing your Favorites</h3>
-      <p>Let's navigate back to our Nuvolo interface and get things set-up for day-to-day work.</p>
-      <p>We will also show you how to edit your Favorites Bar to make it more personalized and easier to use.</p>
+
+      <h3>Part 2: Nuvolo Profiles</h3>
+      <p>Now, we’ll move into Nuvolo. Here, we have two more areas we need to verify our information in. Let’s walk through each of those now.</p>
       <ol>
-        <li>At the top left corner of your browser, select “All” 
+        <li>Navigate to Nuvolo at <a href="https://vasubprod1.servicenowservices.com">https://vasubprod1.servicenowservices.com</a>. If prompted, select your VA.gov account to sign in. You may be automatically logged in.</li>
+        <li>You should be directed to the ITIL User Dashboard and see a screen like this. Verify that you are in the Training environment by looking for the banner along the top. It may be pink or yellow.
+          <ol type="a">
+            <li>Remember that the ITIL User Dashboard is the default homepage for Nuvolo, and will frequently be the first thing you see after logging in.</li>
+          </ol>
+          <img src="Lab-Images/Lab 1-1.3.png" alt="Lab 1, Step 1.3" style="max-width:100%">
+        </li>
+         <li>Select the Profile Icon in the top right corner of your browser. It will be labeled with your initials.
+          <img src="Lab-Images/Lab1-1.4.png" alt="Lab 1, Step 1.4" style="max-width:100%">
+        </li>
+        <li>Confirm you see the following list. It will include your initials, your name, and your position along the top:
+          <img src="Lab-Images/Lab1-1.5.png" alt="Lab 1, Step 1.5" style="max-width:100%">
+        </li>
+        <li>Select “Profile” from the list
+          <img src="Lab-Images/Lab1-1.6.png" alt="Lab 1, Step 1.6" style="max-width:100%">
+        </li>
+        <li>Confirm that the information listed here is accurate. If it isn't, let your manager know so that they can correct it.
+          <img src="Lab-Images/Lab1-1.7.png" alt="Lab 1, Step 1.7" style="max-width:100%">
+        </li>
+      </ol>
+        <p>Next, we'll check out our User Profile</p>
+        <ol>
+          <li>Open the All Filter Navigatior by selecting "All" from the top left of the screen
+            <img src="Lab-Images/Lab1-3.1.png" alt="Lab 1, Step 2.1" style="max-width:100%">
+          </li>
+          <li>Search "My User Attributes" into the filter bar. Open My User Attributes:
+            <img src="Lab-Images/Lab1-1.8n.png" alt="Lab 1, Step 2.2" style="max-width:100%">
+          </li>
+          <li>Click on your name from the list. Make sure to click on the option under the Name column:
+            <img src="Lab-Images/Lab1-1.9n.png" alt="Lab 1, Step 2.3" style="max-width:100%">
+          </li>
+          <li>Here, , you’ll find your assigned VISN, Facility, and Duty Station. Remember that for these labs, you are assigned to the facility of Walla Walla, WA. Verify that your information matches the information below. 
+            <ol type="a">
+              <li>Duty Station indicates which facility your documented hours will roll up to. It’s important to make sure that your duty station is correct so that your hours are credited to the right facility. After your Nuvolo Go-Live, be sure to double check these fields in production and report any discrepancies to your manager as soon as possible. </li>
+            </ol>
+            <img src="Lab-Images/Lab1-1.10.png" alt="Lab 1, Step 2.4" style="max-width:100%">
+          </li>
+        </ol>
+        <p>Great job! Remember, it’s important to make sure that all your location information is correct in both yourHTM and Nuvolo after your Go-Live date. For now, we’ll continue to use the Walla Walla facility as our example. </p>
+
+      <h3>Part 3: Setting Up & Personalizing your Favorites</h3>
+      <p>We’ve seen how to find things in Nuvolo using the All Filter Navigator. Now, let’s see how we can add things to our favorites to make them easier to find. </p>
+      <ol>
+        <li>Open the All Filter Navigator by selecting "All" from the top left of the screen 
           <img src="Lab-Images/Lab1-3.1.png" alt="Lab 1, Step 3.1" style="max-width:100%">
         </li>
-        <li>In the dropdown list, type in “Clinical Asset Management” into your Filter bar If you are taking the Nuvolo Manager Training, you should repeat these steps for “Clinical Asset Management Admin”:
+        <li>Type “Clinical Asset Management” into your Filter bar.
+          <ol type="a">
+            <li>Note: If you don’t see this module in the list, please let us know. We will need to check and update your permissions. </li>
+          </ol>
           <img src="Lab-Images/Lab1-3.2.png" alt="Lab 1, Step 3.2" style="max-width:100%">
         </li>
-        <li>Hover your mouse over “Clinical Asset Management”</li>
-        <li>Click the star icon to the right of “Clinical Asset Management." Select "Done": 
+        <li>Hover your mouse over Clinical Asset Management to see a star icon appear on the right-hand side. Select the star icon, then select Done.: 
           <img src="Lab-Images/Lab1-3.3.png" alt="Lab 1, Step 3.3" style="max-width:100%">
+          <ol type = "a">
+            <li>Note that you will see another result in this list labeled Clinical Asset Management Admin. We will not be using this module in this course. However, if you are an admin or manager, feel free to add this to your favorites as well as it contains a lot of important links. </li>>
+          </ol>
         </li>
-        <li>At the top left corner of your browser, select "Favorites" </li>
+        <li>Npw, open the Favorites menu to the right of All. </li>
         <li>Confirm your “Favorites” menu contains “Clinical Asset Management”
           <img src="Lab-Images/Lab1-3.4.png" alt="Lab 1, Step 3.4" style="max-width:100%">
         </li>
@@ -284,11 +307,11 @@ body.dark .banner {
         <li>Hover your mouse over the name "Emergency Events & Contacts" and click the "X" to remove it from your Favorites Bar.
           <img src="Lab-Images/Lab1-3.7.png" alt="Favorites bar expanded to show Emergency Events & Contacts, with X icon next to it" style="max-width:100%">
         </li>
-        <li>You will see the following pop up, click "Remove" to confirm the removal from your Favorites Bar.
+        <li>Select Remove to confirm that you want to remove this item from your favorites. 
           <img src="Lab-Images/Lab1-3.8.png" alt="Remove favorite confirmation popup with Remove and Cancel buttons"  style="max-width:100%">
         </li>
         <li>That module will no longer be found in your Favorites Bar. If you ever need to reference it, you can find it in the "All" Bar. </li>
-        <li>We can clean up our Favorites bar in a more efficient way. Click the pencil and notepad icon at the top of your Favorites Bar to edit your favorites.
+        <li>Another way to clean up our favorites is by editing the entire menu at once. Click on the pencil and notepad icon at the top of the Favorites menu. 
           <img src="Lab-Images/Lab1-3.9.png" alt="Favorites bar with edit icon (pencil and notepad) highlighted"  style="max-width:100%">
         </li>
         <li>Here we can customize icon, color, and remove favorites much more efficiently. Press the small "x"s to quickly remove the following items from your Favorites Bar:
@@ -303,6 +326,7 @@ body.dark .banner {
           </ol>
           <img src = "Lab-Images/Lab1-3.10.png" alt="Favorites bar in edit mode with X icons next to each favorite"  style="max-width:100%">
         </li>
+        <li>Click Save Edits to finish editing this menu</li>
        </ol>
 
       <h3>Part 4: Tools and Shortcuts</h3>
