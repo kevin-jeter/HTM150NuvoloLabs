@@ -717,30 +717,197 @@ body.dark .banner {
 
     <section class="lab-section" data-lab="Lab 5: Technician Capstone Lab">
       <h2>Lab 5: Technician Capstone Lab</h2>
-      <p>Congratulations on making it to the final lab of the HTM150 Nuvolo Technician Training! This capstone lab is designed to test your knowledge and skills acquired throughout the previous labs. You will be tasked with a series of challenges that simulate real-world scenarios you may encounter as a technician using Nuvolo. This lab will require you to apply your understanding of work orders, asset management, preventative maintenance, and navigation within the Nuvolo system. Be prepared to demonstrate your proficiency in creating, managing, and resolving work orders, as well as effectively utilizing the asset management features. This capstone lab is not only a test of your technical skills but also an opportunity to showcase your problem-solving abilities and attention to detail. Good luck, and remember to leverage all the tools and knowledge you've gained during this training!</p>
-      <h3>Part 1: Customizing your Navigational Experience</h3>
-      <li>Based on what you've learned in Lab 1, customize your Favorites Bar to match the screenshot below. Change your "Home" to be the HTM Nuvolo User Interface Dashboard.
-        <img src="Lab-Images/Lab5-1.1.png" alt="Screenshot of Favorites Bar showing Home, Clinical Asset Management, Clinical Asset Management Admin, Self-Service - Dashboards, ITIL User Dashboard" style="max-width:100%">
-      </li>
-      <h3>Part 2: Work Order Creation and Management</h3>
-      <li>Create a new Corrective Maintenance Work Order for a hypothetical piece of equipment. Ensure to fill out all required fields and assign the work order to yourself. Once created, change the status of the work order to "In Progress" and then to "Pending Documentation."</li>
-      <li>Fill out the following fields: <br>
-        Work Order Number: <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Work Order Type: <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Asset Type and #: <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Priority Level: <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Work Order Summary: <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;">
-      </li>
-      <h3>Part 3: Preventative Maintenance Review</h3>
-      <li>Create a Preventative Maintenance Work Order for a hypothetical piece of equipment. Fill out all required fields and assign the work order to yourself. Once created, change the status of the work order to "In Progress" and then to "Pending Documentation."</li>
-      <li>Fill out the following fields: <br>
-        Work Order Number: <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Asset Type and #: <input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Priority Level: <input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"> <br>
-        Work Order Summary: <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;">
-      </li>
-      <li>Elevate the work order to a Corrective Maintenance Work Order by selecting the appropriate Resolution Code and closing out the PM Work Order.</li>
-      <li>Record the newly created Corrective Maintenance Work Order Number: <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+      <h3>Scenario 1</h3>
+      <p>Andrew Barnes, the facility’s PACS administrator at Walla Walla, calls an Imaging BESS and reports that the ProxiDiagnost rad/fluoro (R/F) unit, EE 32936, is failing its image calibration. Specifically, the image on the workstation is omitting pixels. Andrew has attempted the image calibration three times and was unable to resolve the issue. The R/F system is completely down as a result and Veteran appointments are being cancelled until the system is restored.</p>
+      <p>While Andrew would normally submit a work order through yourHTM, due to the urgency of the issue, the Imaging BESS agreed to open the work order on Andrew’s behalf. The Imaging BESS opens the work order, assigns it to themselves, and configures the work order to ensure Andrew receives email notification as the work progresses</p>
+      <p>The Imaging BESS spent 90 minutes attempting the calibration themselves and were unable to resolve the issue. After contacting Philips, they were advised that the Pixel Image Sensor, part number P90-75546, needs to be replaced. The part costs $560.89 and only one sensor is needed. The Imaging BESS orders the part and updates the work order accordingly.</p>
+      <p>Later that day, with the part in hand, the Imaging BESS replaces the part and successfully performs the image calibration. The Imaging BESS performs a functional verification of the R/F system and certifies that it is fully operational and can be returned to use in Veteran care. The Imaging BESS spent a total of 3 hours and 15 minutes restoring the R/F system to use. In discussing the parts replacement with Philips the prior day, the Imaging BESS was advised that a physicist inspection would not be required following the repair.</p>
+      <p>The Imaging BESS, upon returning to his office, documents and resolves the work order.</p>
+      <p>As the Walla Walla Imaging BESS, generate, document, and resolve the Clinical Work Order appropriately.</p>
+      <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-key-1')">Answer Key</button>
+      <div id="answer-key-1" class="lab-section">
+        <h2>WORK ORDER DOCUMENTATION RUBRIC</h2>
+        
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Phase</th>
+              <th>Documentation Requirement / Entry</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="6"><strong>GENERATION</strong></td>
+              <td>✓ Work Order Type = Corrective Maintenance</td>
+            </tr>
+            <tr>
+              <td>✓ Asset = 32936</td>
+            </tr>
+            <tr>
+              <td>✓ Assignment Group = HTM WWW Biomedical</td>
+            </tr>
+            <tr>
+              <td>✓ Assigned To = HTM User</td>
+            </tr>
+            <tr>
+              <td>✓ Work Order Summary = Failed Image Calibration (or similar)</td>
+            </tr>
+            <tr>
+              <td>✓ Delay in Patient Care = Checked</td>
+            </tr>
+
+            <tr>
+              <td rowspan="3"><strong>IN-PROGRESS</strong></td>
+              <td>✓ LABOR entry of 90 Minutes (Working)</td>
+            </tr>
+            <tr>
+              <td>✓ Additional Comment or Work Note Entered</td>
+            </tr>
+            <tr>
+              <td>✓ PARTS entry for Pixel Image Sensor</td>
+            </tr>
+
+            <tr>
+              <td rowspan="7"><strong>RESOLUTION</strong></td>
+              <td>✓ Labor Entry of 3.25 Hours</td>
+            </tr>
+            <tr>
+              <td>✓ Vendor Serviced = No</td>
+            </tr>
+           <tr>
+              <td>✓ Problem Cause = Device Failure</td>
+            </tr>
+           <tr>
+              <td>✓ Resolution Code = Asset Restored to Functional State</td>
+            </tr>
+           <tr>
+              <td>✓ Appropriate Resolution Details</td>
+            </tr>
+            <tr>
+              <td>✓ Is Physicist Inspection Required = No</td>
+           </tr>
+           <tr>
+              <td>✓ Work Order State = Pending Review</td>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Scenario 2</h3>
+      <p>A Walla Walla BESS has been assigned a Preventive Maintenance (PM) work order for a CONNEX 6800 vital sign monitor. For the next 1 hour and 45 minutes, the BESS performs the PM using the Welch Allyn Service Tool, but the device fails the Non-Invasive Blood Pressure (NIBP) calibration. The BESS attempts the calibration three times unsuccessfully.</p>
+      <p>The BESS calls Welch Allyn and is told the main PCB needs to be replaced. Due to the cost of the repair and time needed to remediate the failure, the BESS decides to send the device to Welch Allyn to be repaired. The BESS documents the failure and resolves the PM work order but will document the any and all further actions on the resulting follow-up CM work order.</p>
+      <p>As a Walla Walla BESS, document and resolve the Clinical Work Order appropriately. Choose any of the generated PM work orders for CONNEX 6800s that are in the Ready for Work state and assign it to yourself.</p>
+      <p>TECH NOTES: Setup & Execute PM Definition/WOs for CONNEX 6800s. Assign PM work orders individually to students.</p>
+      <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-key-2')">Answer Key  </button>
+      <div id="answer-key-2" class="lab-section">
+        <h2>WORK ORDER DOCUMENTATION RUBRIC</h2>
+        
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Phase</th>
+              <th>Documentation Requirement / Entry</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GENERATION</strong></td>
+              <td><em>N/A</em></td>
+            </tr>
+
+            <tr>
+              <td><strong>IN-PROGRESS</strong></td>
+              <td>✓ LABOR entry of 1 Hour and 45 Minutes (Working)</td>
+            </tr>
+
+            <tr>
+              <td rowspan="5"><strong>RESOLUTION</strong></td>
+              <td>✓ Vendor Serviced = No</td>
+            </tr>
+            <tr>
+              <td>✓ Resolution Code = Corrective Action Required</td>
+            </tr>
+            <tr>
+              <td>✓ Appropriate Resolution Details</td>
+            </tr>
+            <tr>
+              <td>✓ Work Order State = Pending Review</td>
+            </tr>
+            <tr>
+              <td>✓ Follow-Up CM Generated</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Scenario 3</h3>
+      <p>A Walla Walla Info Sys BESS goes to the Respiratory department to do a routine check on the BreezeSuite computer for the Platinum Elite DX, EE 29708. The computer is off and when the Info Sys BESS attempts to power the computer on, he discovers that the hard drive failed.</p>
+      <p>After discussing the failure with the Respiratory department manager, the Info Sys BESS is told that there are no patients scheduled for the next 30 days as a respiratory technician is currently being onboarded. The Info Sys BESS disconnects and removes the computer and brings it to their office. A total of 60 minutes was spent checking, removing, and bringing the computer to the shop. The Info Sys BESS generates a work order.</p>
+      <p>The Info Sys BESS calls Medgraphics Corp (MGC) to discuss the hard drive failure. MGC sends a quote for the cost of the replacement hard drive, and the vendor on-site visit to configure the BreezeSuite software. The hard drive replacement and vendor support is estimated to cost $2,500.</p>
+      <p>The Info Sys BESS submits a funding request to their department management, per their local policies, and the request is approved. MGC receives the purchase order from the department’s government purchase card holder and schedules with the Info Sys BESS to come on-site in 10 days from today. The Info Sys BESS updates the work order accordingly and attached the vendor quote.</p>
+      <p>As a Walla Walla Info Sys BESS, generate and document the Clinical Work Order appropriately.</p>
+      <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-key-3')">Answer Key  </button>
+
+        <div id="answer-key-3" class="lab-section">
+          <h2>WORK ORDER DOCUMENTATION RUBRIC</h2>
+          
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">Phase</th>
+                <th>Documentation Requirement / Entry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="6"><strong>GENERATION</strong></td>
+                <td>✓ Work Order Type = Corrective Maintenance</td>
+              </tr>
+              <tr>
+                <td>✓ Asset = 29708</td>
+              </tr>
+              <tr>
+                <td>✓ Assignment Group = HTM WWW Biomedical</td>
+              </tr>
+              <tr>
+                <td>✓ Assigned To = HTM User</td>
+              </tr>
+              <tr>
+                <td>✓ Work Order Summary = Hard Drive Failure (or similar)</td>
+              </tr>
+              <tr>
+                <td>✓ Delay in Patient Care = Not Checked</td>
+              </tr>
+
+              <tr>
+                <td rowspan="7"><strong>IN-PROGRESS</strong></td>
+                <td>✓ LABOR entry of 60 Minutes (Working)</td>
+              </tr>
+              <tr>
+                <td>✓ Additional Comment or Work Note Entered</td>
+              </tr>
+              <tr>
+                <td>✓ PARTS entry for MGC Service</td>
+              </tr>
+              <tr>
+                <td>✓ Work Order State = On Hold</td>
+              </tr>
+              <tr>
+                <td>✓ Substate = Awaiting Parts or Awaiting Vendor Service</td>
+              </tr>
+              <tr>
+                <td>✓ Hold Status End Date = Today + 10 Days</td>
+              </tr>
+              <tr>
+                <td>✓ ATTACHMENT on Work Order Form (Vendor Quote)</td>
+              </tr>
+              <tr>
+                <td rowspan="4"><strong>RESOLUTION</strong></td>
+                <td>N/A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       <h3>Part 4: Scavenger Hunt</h3>
       <li> What is the link for YourHTM (Nuvolo) SharePoint site? <input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
       <li> Who is your BESM VISN HTM Lead or Leads? <input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
@@ -768,6 +935,23 @@ body.dark .banner {
       document.body.classList.toggle('dark', themeToggle.checked);
       document.body.classList.toggle('light', !themeToggle.checked);
     });
+    function toggleAnswerKey(button, sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    if (section.classList.contains('active')) {
+      // Currently visible → hide it
+      section.classList.remove('active');
+      button.textContent = 'Answer Key';
+    } else {
+      // Currently hidden → show it
+      section.classList.add('active');
+      button.textContent = 'Hide Answer Key';
+      
+      // Optional: smoothly scroll to the table when revealed
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
   </script>
 </body>
 
