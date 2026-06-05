@@ -170,10 +170,12 @@ body.dark .banner {
         <option value="User Guide">User Guide</option>
         <option value="Lab 1: Orientation and Navigation">Lab 1: Orientation and Navigation</option>
         <option value="Lab 2: Work Orders and Documentation">Lab 2: Work Orders and Documentation</option>
+        <option value="Lab 3: Time Entry">Lab 3: Time Entry</option>
         <option value="Optional Lab: Customizing Columns in List View">Optional Lab: Customizing Columns in List View</option>
-        <option value="Lab 3: Preventative Maintenance">Lab 3: Preventative Maintenance</option>
-        <option value="Lab 4: Asset Management">Lab 4: Asset Management</option>
-        <option value="Lab 5: Technician Capstone Lab">Lab 5: Technician Capstone Lab</option>
+        <option value="Lab 4: Submitting Work Order Through yourHTM">Lab 4: Submitting Work Order Through yourHTM</option>
+        <option value="Lab 5: Preventive Maintenance">Lab 5: Preventive Maintenance</option>
+        <option value="Lab 6: Asset Management">Lab 6: Asset Management</option>
+        <option value="Technician Capstone Lab">Technician Capstone Lab</option>
       </select>
     </div>
 
@@ -462,6 +464,95 @@ body.dark .banner {
       </ol>
     </section>
 
+    <section class="lab-section" data-lab="Lab 3: Time Entry">
+      <h2>Lab 3: Time Entry</h2>
+
+      <h3>Part 1: Adding a Labor Entry</h3>
+      <p>In Lab 2, you created a new work order and assigned it to yourself. In this lab, we’ll add a labor entry to that work order to indicate hours spent working on it.</p>
+      <p>Note: If you weren't able to complete lab 2, no worries! You can still complete this lab using a different work order.</p>
+      <ol>
+        <li>In Nuvolo, open your Favorites menu. Find and open the My Work Orders list. </li>
+        <li>From the list, find the work order you created in Lab 2. Open it by clicking on the hyperlinked Work Order Number.</li>
+        <li>You might notice a blue banner reminding you to add a Part/Services record before you can resolve the work order. Let’s do that now! Click on New Parts/Services in the top right. </li>
+        <li>On the Parts/Services record, confirm that the Type is “Labor” and the Service Activity is “Working”. These are the default options, and what we’ll use to indicate time spent working on maintenance.</li>
+        <li>Find the Work Duration section. The first text box represents Days. Go to the next text box, for Hours, and enter 1.</li>
+        <li>Click Save to save this record and remain on this page. Remember, you can also click Submit to save and return to the work order.</li>
+        <li>Once you click Save, the Start Time and Amount will automatically populate. You can change the Start Time while creating the record, or after saving it. To change Amount, you’ll need to change the Work Duration and save.</li>
+        <li>Click Update to save this record and return to the work order. Or, click the Back Button in the top left.</li>
+        <li>There is another way we can add a Parts/Services record. Go back to the work order list by clicking the Back Button again.</li>
+        <li>From the list, click on the Down Arrow at the very front of the row.</li>
+        <li>This will pull up the Load Related Lists section of the work order. The Parts/Services records will come up first. You should see the record we just added appear in this list.</li>
+        <li>You can click on Parts/Services to explore the other tabs associated with this work order.</li>
+        <li>To create a new Parts/Services record from here, click on the New button. This will bring you to the same record form we saw earlier. Repeat steps 4 – 6 to add another labor entry to this work order.</li>
+      </ol>
+      <p>Great job! You should notice that the reminder banner from step 3 is gone. Once you add in your final resolution fields, you’ll be able to close out this work order.</p>
+
+      <h3>Part 2: Documenting HTM150 Training</h3>
+      <p>In part 1, we reviewed how to add a working labor entry to an existing work order. Now, let’s take a look at how we can track our training hours in Nuvolo.</p>
+      <p>Most commonly, you’ll have a Professional Services work order that you’ll save all your training hours to. Let’s start by creating this work order.</p>
+      <ol>
+        <li>In Nuvolo, open your Favorites menu. Click on New Work Order.</li>
+        <li>For Work Order Type, use the magnifying glass to select “Professional Services”.</li>
+        <li>Under Asset/Location?, change the field to be Location.</li>
+        <li>Work Location should now be starred in red. Set the location to B102-0086.
+        <ol type="a">
+          <li>Note: This is an office location in the Walla Walla facility that we’re using as an example. When you enter real training hours, use your own office locations or follow your manager’s guidance.</li>
+        </ol>
+        </li>
+        <li>In Work Order Summary, write “Training Documentation”.</li>
+        <li>Click Save.</li>
+        <li>Several fields should be auto-populated just like we saw in Lab 2, including the Assigned fields. Let’s make sure this work order is assigned to us. Remove the name in the Assigned To field and add your own.</li>
+      </ol>
+      <p>Now, we can add in our training! Let’s start with adding our hours for attending this course. HTM150 is a two-day course, with 6 hours each day. We can either add 2 six-hour entries, or 1 twelve-hour entry. For this lab, we’ll go with 1 entry for both days, but please note that either method works.</p>
+      <ol start="8">
+        <li>Click on the New Parts/Services button in the top right.</li>
+        <li>Type will still be “Labor”. However, we will need to change the Service Activity. Click on the magnifying glass next to “Working”.</li>
+        <li>In the list that pops up, search for “Education Received Professional”. Click on the hyperlinked number associated with that record.</li>
+        <li>Next, add 12 to the Hours text box. Underneath, add “HTM150 Training” to the Summary.</li>
+        <li>Click Submit to save this record and return to the work order.</li>
+        <li>Remember that labor hours only count if the work order is closed. Let’s make sure we can submit this work order by adding all of the appropriate resolutions details. First, move this work order into Work in Progress by double clicking on the Work in Progress button.</li>
+        <li>Set Vendor Serviced to “No”.</li>
+        <li>Add the Problem Cause “Internal to HTM”.</li>
+        <li>Add the Resolution Code “Time Documented”.</li>
+        <li>Add an explanation into Resolution Details, like “Documenting training received this month.” </li>
+        <li>Add a Service Complete Date. Since we’re adding multiple trainings throughout this entire month, we’ll set the date to be the end of the current month.</li>
+        <li>Click Save.</li>
+      </ol>
+      <p>Congratulations! You’ve successfully created a Professional Services work order to track your training hours, added the first training to that work order, and got it ready to submit. Next up, we’ll add some more examples, and review what happens when we need to make any changes.</p>
+
+      <h3>Part 3: Additions and Edits</h3>
+        <p>Let’s say that on the first of this month, you completed 4 hours of TMS training. How can we document this?</p>
+        <ol>
+          <li>On the same Professional Services work order, click New Parts/Services record.</li>
+          <li>Similar to before, make sure the Type is “Labor” and set the Service Activity to “Education Received Professional”.</li>
+          <li>Add 4 hours.</li>
+          <li>Enter “TMS Training” into the Summary box.</li>
+          <li>In the Start Time field, click on the Calendar Icon. Double click on the first of this month.</li>
+          <li>Click Save.</li>
+          <li>This time, you’ll notice Start Time will stay at what you set it to, instead of auto-populating the current date and time. You can use this to backdate any Parts/Services records.
+          <ol type="a">
+            <li>Note: While there is no restriction on backdating labor, please remember that work order must be closed for the labor hours to count. Try to stay within the current quarter when backdating.</li>
+          </ol>
+          </li>
+          <li>Click the Back Button to return to the main work order.</li>
+          <li>Scroll to the very bottom of the page. Click Load Related Lists.</li>
+          <li>Under Parts/Services, you should see your two labor entry records for the two different trainings you added.</li>
+          <li>Let’s say that we actually completed our TMS training on the first of last month, not this month. There was a different work order we were supposed to add those training hours to. How can we correct this?
+          <ol type="a">
+            <li>Option 1: “Delete” the record on this work order by setting the work duration to 1 second. Add a record to the correct work order, and back date it.</li>
+            <li>Option 2: Keep the record on this work order. Backdate the record, and add a note to explain.</li>
+          </ol>
+          </li>
+          <li>With either option, we need to edit this record. To start, open the record by clicking on the hyperlinked number associated with it. Make sure to click on the record for our TMS training.</li>
+          <li>Here, we can edit this record exactly the same way we created it. For this lab, we’ll use option 2 and backdate this entry. Using the same Start Time field as before, select the first of last month.</li>
+          <li>Add a note to the Summary. For example, “TMS Training – May".</li>
+          <li>Click Update.</li>
+          <li>Scroll to the very bottom of the work order. Now, you should see our two labor entries, with their start times in different months.</li>
+        </ol>
+      <p>Congratulations, you’ve completed the lab! You now know how to add labor hours to a work order, and how to track your training. These same principles can be translated to all other service activities, including things like travel time. Remember that you can’t delete a Parts/Services record, but you can always edit it to match what you need.</p>
+              
+
+    
     <section class="lab-section" data-lab="Optional Lab: Customizing Columns in List View">
       <h2>Optional Lab: Customizing Columns in List View</h2>
 
@@ -520,11 +611,11 @@ body.dark .banner {
       
     </section>
 
-    <section class="lab-section" data-lab="Lab 3: Preventative Maintenance">
-      <h2>Lab 3: Preventative Maintenance</h2>
+    <section class="lab-section" data-lab="Lab 5: Preventive Maintenance">
+      <h2>Lab 5: Preventive Maintenance</h2>
 
-      <h3>Part 1: Introduction to Preventative Maintenance</h3>
-      <p>The good news about Preventative Maintenance within Nuvolo is that it is very similar to writing any style of Work Order! You may actually notice a large amount of overlap between this lab and Lab 2. You will have another chance create a Work Order; except this time we will exclusively be focusing on a Preventative Maintenance Work Order. Keep in mind, most of your PM Work Orders will NOT be manually created. But we will manually create one today to reinforce Work Order training, and to provide you insight into the details that make up a PM Work Order.</p>
+      <h3>Part 1: Introduction to Preventive Maintenance</h3>
+      <p>The good news about Preventive Maintenance within Nuvolo is that it is very similar to writing any style of Work Order! You may actually notice a large amount of overlap between this lab and Lab 2. You will have another chance create a Work Order; except this time we will exclusively be focusing on a Preventative Maintenance Work Order. Keep in mind, most of your PM Work Orders will NOT be manually created. But we will manually create one today to reinforce Work Order training, and to provide you insight into the details that make up a PM Work Order.</p>
       <ol>
         <li>Reference your Favorites Bar and in the Filter Bar, type "Work Orders"
           <img src="Lab-Images/Lab3-1.1.png" alt="Screenshot of Favorites Search Bar with 'Work Orders' typed, showing My Work Order Boards, Work Orders, New Work Order, All non-PM, All PM, etc." style="max-width:100%">
@@ -659,8 +750,8 @@ body.dark .banner {
       <p>You're well on your way to being a Nuvolo pro!</p>
     </section>
 
-    <section class="lab-section" data-lab="Lab 4: Asset Management">
-      <h2>Lab 4: Asset Management</h2>
+    <section class="lab-section" data-lab="Lab 6: Asset Management">
+      <h2>Lab 6: Asset Management</h2>
       <p>Mostly everything we've talked about so far has been centered around Work Orders – how to create them, how to view them, how to upgrade them, etc. You're probably tired of talking about Work Orders. So let's move on to another core pillar of your day-to-day Nuvolo use: Asset Management.
 
       <h3>Part 1: Finding Equipment and Asset Management Familiarization</h3>
@@ -715,8 +806,8 @@ body.dark .banner {
       <p>So now you've identified how to filter for different equipment, how to search specific equipment if you have the right number, and familiarized yourself with the functions of an equipment page.</p>
     </section>
 
-    <section class="lab-section" data-lab="Lab 5: Technician Capstone Lab">
-      <h2>Lab 5: Technician Capstone Lab</h2>
+    <section class="lab-section" data-lab="Technician Capstone Lab">
+      <h2>Technician Capstone Lab</h2>
       <h3>Scenario 1</h3>
       <p>Andrew Barnes, the facility’s PACS administrator at Walla Walla, calls an Imaging BESS and reports that the ProxiDiagnost rad/fluoro (R/F) unit, EE 32936, is failing its image calibration. Specifically, the image on the workstation is omitting pixels. Andrew has attempted the image calibration three times and was unable to resolve the issue. The R/F system is completely down as a result and Veteran appointments are being cancelled until the system is restored.</p>
       <p>While Andrew would normally submit a work order through yourHTM, due to the urgency of the issue, the Imaging BESS agreed to open the work order on Andrew’s behalf. The Imaging BESS opens the work order, assigns it to themselves, and configures the work order to ensure Andrew receives email notification as the work progresses</p>
