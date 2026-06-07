@@ -675,19 +675,24 @@ body.dark .banner {
 
       <h3>Part 1: Submitting the Work Order into yourHTM</h3>
       <p>This lab will flip between yourHTM and Nuvolo. You will need to have both systems open at the same time. If possible, it may help to use a split screen to be able to view both at once, though this isn’t a requirement. Remember that yourHTM is the front-end that your customers will use to submit work orders, and Nuvolo is the back-end system that you will use to work on work orders.</p>
-      <p>Start in yourHTM. Make sure you are in the testing environment. </p>
+      <p>Start in yourHTM. Make sure you are in the training environment. </p>
       <p>In lab 1, you used Set My Filters to set up your ward in Walla Walla. As a reminder, this facility is acting as our example, since it already has all of its devices set up in Nuvolo. If you use a different facility, you will likely see a blank devices list in later steps. Let's start this lab by double checking our facility in yourHTM.</p>
       <ol>
         <li>Select Set My Filters along the top bar.</li>
-        <li>Make sure your information matches the screenshot below. If not, set your VISN to “VISN 20”. Set your Facility to “Walla Walla, WA”. Click Submit to save any changes you make.</li>
+        <li>Make sure your information matches the screenshot below. If not, set your VISN to “VISN 20”. Set your Facility to “Walla Walla, WA”. Click Submit to save any changes you make.
+          <img src="Lab-Images/Lab yourHTM-1.2.png" alt="Screenshot of correct info in set my filters" style="max-width:100%">
+        </li>
       </ol>
       <p>Once you verify your facility is set to Walla Walla, you’re ready to start this lab!</p>
       <ol>
-        <li>Navigate back to the yourHTM home page by clicking on the yourHTM logo in the top left corner.</li>
+        <li>Navigate back to the yourHTM home page by clicking on the yourHTM logo in the top left corner.
+          <img src="Lab-Images/Lab yourHTM-1.1.png" alt="Screenshot of correct info in set my filters" style="max-width:100%">
+        </li>
         <li>On the home page, you’ll see two buttons. Click on the first one, labeled “Is your technology broken? Submit a Work Order”.
         <ol type="a">
           <li>This will allow us to submit a Corrective Maintenance work order. For all other work order types, direct your customers to use the “Need more HTM support? Submit a Request” button.</li>
         </ol>
+          <img src="Lab-Images/Lab yourHTM-1.2.2.png" alt="Screenshot of Submit a Work Order button" style="max-width:100%">
         </li>
         <li>You’ll be redirected to a page to Submit a Work Order. Scroll down and fill in the following required fields:
         <ol type="a">
@@ -699,13 +704,20 @@ body.dark .banner {
           </li>
           <li>Work Order Summary</li>
         </ol>
+          <img src="Lab-Images/Lab yourHTM-1.3.png" alt="Screenshot of empty fields to fill in submit work order form" style="max-width:100%">
         </li>
       </ol>
       <p>You’ll notice that there is no option for your customers to select a priority for this work order. The only options available to them are the fields “Is this request related to a JPSR?” and “Has there been a delay in patient care?”. Selecting Yes on either of these fields will increase the priority on the work order automatically. For this lab, we’ll select Yes to see how that impacts the work order. We’ll then see how we can remove this in Nuvolo.</p>
       <ol start="4">
-        <li>Under the dropdown “Has there been a delay in patient care?”, select “Yes”.</li>
-        <li>Review the work order to ensure you have all of the required fields. Once you’re satisfied with the information, click Submit on the right side. The screenshot below is an example. Please use your own information and enter any additional details that you'd like.</li>
-        <li>You’ll be automatically moved to a page that shows you details about your created work order. Find the Work Order Number in either of the locations shown in the screenshot below. Note that your WO number will be different than the example.</li>
+        <li>Under the dropdown “Has there been a delay in patient care?”, select “Yes”.
+          <img src="Lab-Images/Lab yourHTM-1.5.png" alt="Screenshot of delay in patient care drop down indicating yes" style="max-width:100%">
+        </li>
+        <li>Review the work order to ensure you have all of the required fields. Once you’re satisfied with the information, click Submit on the right side. The screenshot below is an example. Please use your own information and enter any additional details that you'd like.
+          <img src="Lab-Images/Lab yourHTM-1.6.png" alt="Screenshot of completed work order form" style="max-width:100%">
+        </li>
+        <li>You’ll be automatically moved to a page that shows you details about your created work order. Find the Work Order Number in either of the locations shown in the screenshot below. Note that your WO number will be different than the example.
+          <img src="Lab-Images/Lab yourHTM-1.7.png" alt="Screenshot of yourHTM summary page for submitted work order" style="max-width:100%">
+        </li>
         <li>Copy the Work Order Number.</li>      
       </ol>
       <p>You have successfully submitted a work order through yourHTM! Keep this page open so we can come back to it later.</p>
@@ -714,31 +726,60 @@ body.dark .banner {
       <p>Now that we have created a WO, we can move to Nuvolo to view it.</p>
       <ol>
         <li>Open Nuvolo in a new tab. Make sure you are in the testing environment, the same environment you were using for yourHTM.</li>
-        <li>Take the Work Order Number you copied from yourHTM, and paste it into the Global Search to find it in Nuvolo. Click to open it.</li>
-        <li>Review the information in the primary form data. Note the Work Order Type is “Corrective Maintenance”, the Asset/Location field is set to “Asset”, and the Priority is set to “1 – Critical” and cannot be edited. You’ll also see all of the Asset information has been automatically populated, and the work order should be assigned to an Assignment Group and an Assigned To technician. Finally, note that the Initiation Reason is “End User Reported”. This is our indication that this work order was submitted through yourHTM.</li>
-        <li>Scroll down to the bottom of this work order, and select Customer Details. Here, you can see information about who requested or submitted a work order. As you scroll down, you should recognize the form as the same one we filled in yourHTM.</li>
+        <li>Take the Work Order Number you copied from yourHTM, and paste it into the Global Search to find it in Nuvolo. Click to open it.
+          <img src="Lab-Images/Lab yourHTM-2.2.png" alt="Screenshot of gloabl search with work order from part 1 of lab" style="max-width:100%">
+        </li>
+        <li>Review the information in the primary form data. Note the Work Order Type is “Corrective Maintenance”, the Asset/Location field is set to “Asset”, and the Priority is set to “1 – Critical” and cannot be edited. You’ll also see all of the Asset information has been automatically populated, and the work order should be assigned to an Assignment Group and an Assigned To technician. Finally, note that the Initiation Reason is “End User Reported”. This is our indication that this work order was submitted through yourHTM.
+          <img src="Lab-Images/Lab yourHTM-2.3.png" alt="Screenshot of full work order" style="max-width:100%">
+        </li>
+        <li>Scroll down to the bottom of this work order, and select Customer Details. Here, you can see information about who requested or submitted a work order. As you scroll down, you should recognize the form as the same one we filled in yourHTM.
+          <img src="Lab-Images/Lab yourHTM-2.4.png" alt="Screenshot of customer details for work order" style="max-width:100%">
+        </li>
         <li>Let’s start by changing the priority on this work order. We know that the only way a work order submitted through yourHTM can be set to critical is if someone selects Yes on the fields “Is this request related to a JPSR?” or “Has there been a delay in patient care?”. We can review these fields under Additional Resolution Details. Click onto that tab.</li>
-        <li>Under Additional Resolution Details, find the field Delay in Patient Care. It should be checked to indicate Yes. Remove this check by clicking on it.</li>
-        <li>As soon as you click to remove the checkmark, the priority will automatically change to “3 - Moderate”. Make sure to save!</li>
+        <li>Under Additional Resolution Details, find the field Delay in Patient Care. It should be checked to indicate Yes. Remove this check by clicking on it.
+          <img src="Lab-Images/Lab yourHTM-2.6.png" alt="Screenshot of additional resolutions details with Delay in Patient Care highlighted" style="max-width:100%">
+        </li>
+        <li>As soon as you click to remove the checkmark, the priority will automatically change to “3 - Moderate”. Make sure to save this change!
+          <img src="Lab-Images/Lab yourHTM-2.7.png" alt="Screenshot of updated priority" style="max-width:100%">
+        </li>
         <li>Click back to the Customer Details tab. Notice that the field “Has there been a delay in patient care?” is still marked Yes in the submission form information. This field is no longer true for this work order, but the form will preserve the original information submitted in Customer Details.</li>
-        <li>Next, click on the Details tab. Notice the first item is a text box labeled “Additional Comments (Customer visible)”.</li>
-        <li>Add a comment to this text box and click Post.</li>
-        <li>Find the checkbox on the bottom right on this text box labeled “Work Notes”. Select it. Add another comment to the box, and click Post again.</li>
-        <li>Notice that the first comment you added has a black bar on the left. You’ll also notice it says “Additional Comments” in the top right. This indicates that the comment is viewable to anyone. The second comment you added has a yellow bar, and is labeled as “Work Notes”. This indicates that the comment is only viewable to your internal team, or people who have access to view this work order in Nuvolo.</li>        
+        <li>Next, click on the Details tab. Notice the first item is a text box labeled “Work Notes”.
+          <img src="Lab-Images/Lab yourHTM-2.9.png" alt="Screenshot of work notes under Details" style="max-width:100%">
+        </li>
+        <li>Add a comment to this text box and click Post.
+          <img src="Lab-Images/Lab yourHTM-2.10.png" alt="Screenshot of comment entered into work notes" style="max-width:100%">
+        </li>
+        <li>Find the checkbox on the bottom right on this text box labeled “Additional Comments (Customer visible)”. Select it. Add another comment to the box, and click Post again.
+          <img src="Lab-Images/Lab yourHTM-2.11.png" alt="Screenshot of comment entered into additional comments" style="max-width:100%">
+        </li>
+        <li>Notice that the first comment you added has a yellow bar on the left. You’ll also notice it says “Work Notes” in the top right. This indicates that the comment is only viewable to your internal team, or people who have access to view this work order in Nuvolo. The second comment you added has a black bar, and is labeled as “Additional Comments”. This indicates that the comment is viewable to anyone.
+          <img src="Lab-Images/Lab yourHTM-2.12.png" alt="Screenshot of activity under dEtails showing the added comments" style="max-width:100%">
+        </li>        
       </ol>
       <p>Now, we’re going to jump back to yourHTM. You should still have the yourHTM page open from part 1 of this lab. If you’ve accidentally closed it, don’t worry! The next few steps will review how to get back to that page.</p>
       <ol>
         <li>Open yourHTM. Return to the homepage by clicking on the yourHTM logo in the top left.</li>
-        <li>On the homepage, you’ll see the familiar buttons to submit a work order. Underneath them, you’ll find a table. Select the My Work Orders tab.</li>
-        <li>Here, you’ll find a list of all of the work orders that list you in the Customer Details. Find the work order that you created for this lab, and open it by clicking on the work order number.</li>
+        <li>On the homepage, you’ll see the familiar buttons to submit a work order. Underneath them, you’ll find a table. Select the My Work Orders tab.
+          <img src="Lab-Images/Lab yourHTM-2.14.png" alt="Screenshot of My Work Orders tab in the table on yourHTM homepage" style="max-width:100%">
+        </li>
+        <li>Here, you’ll find a list of all of the work orders that list you in the Customer Details. Find the work order that you created for this lab, and open it by clicking on the work order number.
+          <img src="Lab-Images/Lab yourHTM-2.15.png" alt="Screenshot of work order submitted through yourHTM with work order number highlighted" style="max-width:100%">
+        </li>
         <li>You’ll be redirected to the page containing details about this work order. This is the same page you saw after you first submitted this work order! This time, there will be a thread of comments after the work order was created. Review these to see they are the same comments you added to the Details tab on the work order in Nuvolo.
         <ol type="a">
           <li>Notice that the yellow bar is still indicating our internal Work Notes comment. Our Customer Visible comment is not marked in color.</li>
         </ol>
+          <img src="Lab-Images/Lab yourHTM-2.16.png" alt="Screenshot of comments on yourHTM summary page" style="max-width:100%">
         </li>
-        <li>As a customer, you can add comments using this platform. Add a comment now by typing it into the “Type your message here...” bar and clicking Send.</li>
-        <li>Your comment will then appear in the thread of comments. It will also be labeled as an Additional Comment, since this is customer facing.</li>
-        <li>Jump back to Nuvolo. Open your work order, and go back to the Details section at the bottom. You’ll see that same thread of comments appear under the Activities on this work order.</li>
+        <li>As a customer, you can add comments using this platform. Add a comment now by typing it into the “Type your message here...” bar and clicking Send.
+          <img src="Lab-Images/Lab yourHTM-2.17.png" alt="Screenshot of comment entered into additional comments" style="max-width:100%">
+        </li>
+        <li>Your comment will then appear in the thread of comments. It will also be labeled as an Additional Comment, since this is customer facing.
+          <img src="Lab-Images/Lab yourHTM-2.18.png" alt="Screenshot of full comment thread" style="max-width:100%">
+        </li>
+        <li>Jump back to Nuvolo. Open your work order, and go back to the Details section at the bottom. You’ll see that same thread of comments appear under the Activities on this work order.
+          <img src="Lab-Images/Lab yourHTM-2.19.png" alt="Screenshot of updated Activities for the work order in Nuvolo" style="max-width:100%">
+        </li>
       </ol>
       <p>Congratulations, you've completed this lab! You know now how to submit a request through yourHTM, and how to find and work on that request in Nuvolo. Optionally, you can continue to make updates to this work order to see how they appear in yourHTM.</p>
     </section>
