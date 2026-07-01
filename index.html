@@ -883,58 +883,49 @@ body.dark .banner {
 
     <section class="lab-section" data-lab="Lab 6: Asset Management">
       <h2>Lab 6: Asset Management</h2>
-      <p>Mostly everything we've talked about so far has been centered around Work Orders – how to create them, how to view them, how to upgrade them, etc. You're probably tired of talking about Work Orders. So let's move on to another core pillar of your day-to-day Nuvolo use: Asset Management.
-
-      <h3>Part 1: Finding Equipment and Asset Management Familiarization</h3>
+      <p>In this lab, you will review Clinical Device records. This lab will ask you to first open the record for a specific device, and then find additional information about that device in the form of a scavenger hunt. You will not modify any records during this lab.</p>
+      <p>To find a device record:</p>
       <ol>
-        <li>Much like any other task on Nuvolo, let's start by searching in the "All". Search for "Models" and select it from the dropdown.
-          <img src="Lab-Images/Lab4-1.1.png" alt="Screenshot of All-Purpose Search Bar with 'Models' typed, showing Models, Model Categories, Model Manufacturers, etc." style="max-width:100%">
-        </li>
-        <li>You should see a list of data containing models, manufacturers, model numbers, and more. You'll see there are 516,000+ results!
-          <img alt="Screenshot of Models list page showing columns like Model, Manufacturer, Model Number, etc." src="Lab-Images/Lab4-1.2.png" style="max-width:100%">
-        </li>
-        <li>Here is where our filter button comes in handy. Click on the filter button at the top of the page</li>
-        <li>Let’s say you only want to see equipment from a specific manufacturer – let’s assign filters to make that happen. Assign your filter to read: “Manufacturer” and “is”</li>
-        <li>You now can look up equipment based solely on manufacturer. Let’s take a second to play around with these filter options. Explore the list of options and familiarize yourself with helpful data filters.</li>
-        <li>Let’s quickly put your data filtering abilities to the test. Perform the following steps and record the Equipment Number
-          <ol type="a">
-            <li>You want to find a specific piece of equipment and you know the following information:
-              <ol type="i">
-                <li>Asset Type: CARTS: MEDICATION/STORAGE: POWERED</li>
-                <li>Manufacturer: HOWARD MEDICAL</li>
-                <li>Model Name: PARADIGM</li>
-                <li>What is the equipment number?</li>
-              </ol>
-            </li>
-          </ol>
-          <img alt="Screenshot of Models list page showing columns like Model, Manufacturer, Model Number, etc." src="Lab-Images/Lab4-1.3.png" style="max-width:100%">
-        </li>
-        <li>You should have gotten the number: CMOD0118262
-          <img alt="Screenshot of Models list page showing filtered results for CARTS: MEDICATION/STORAGE: POWERED, HOWARD MEDICAL, PARADIGM with Equipment Number CMOD0118262" src="Lab-Images/Lab4-1.4.png" style="max-width:100%">
-        </li>
-        <li>Now that you have a specific equipment number... let's say you wanted to access this equipment on Nuvolo again, but this time you know the exact equipment number... what feature could you use to directly search it?</li>
-        <li>I hope you said... Global Search Function! Type in CMOD0118262 into your Global Search Function at the top of your browser</li>
-        <li>Click "View Results"</li>
-        <li>You should see the following page:
-          <img src="Lab-Images/Lab4-1.5.png" alt="Screenshot of Global Search Results page showing 1 result for Equipment Number CMOD0118262" style="max-width:100%">
-        </li>
-        <li>Select the 1 result and you should see the following page:
-          <img src="Lab-Images/Lab4-1.6.png" alt="Screenshot of Equipment page for Equipment Number CMOD0118262" style="max-width:100%">
-        </li>
-        <li>In this lab, we are only referencing this one particular piece of equipment that I randomly selected. But imagine you reference this page about equipment at your facility. On this page you should be able to see:
-          <ol type="a">
-            <li>Equipment Number</li>
-            <li>Model Name</li>
-            <li>Manufacturer</li>
-            <li>Asset Type</li>
-            <li>ID</li>
-            <li>Price</li>
-            <li>Compatibility</li>
-            <li>Any relevant and useful information you would want to know about any piece of equipment</li>
-          </ol>
-        </li>
+        <li>Open your favorites menu. Open the "My Facility Devices" list.</li>
+        <li>Use the Asset Tag search or the filters on this list to search for each Asset Tag listed below.</li>
+        <li>Open the device record by clicking on the Asset Tag for it.</li>
       </ol>
-      <p>So now you've identified how to filter for different equipment, how to search specific equipment if you have the right number, and familiarized yourself with the functions of an equipment page.</p>
+      <p>An answer key will be provided for each device that explains where to find the information.</p>
+
+      <h3>Asset Tag: 36887</h3>
+      <ol>
+        <li>What is the Vendor Site ID needed for reporting issues and submitting repair requests to the manufacturer?<input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>Where is this Clinical Device located within the facility?<input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>Who is primarily assigned responsibility for Clinical Work Orders on this device?<input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>Is this device a component of a Parent Device?<input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What is the Hostname of this Device?<input type="text" name="q5" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What is the IP Address assigned to this Device in NMDD?<input type="text" name="q6" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>Is this device Compatible with Oracle Health (Cerner) as indicated in the Clinical Devices record?<input type="text" name="q7" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+      </ol>
+
+      <h3>Asset Tag: 33333</h3>
+      <ol>
+        <li>What is the Serial Number of this device?<input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>When was this device acquired and/or installed (date only)?<input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>When is this device’s next PM work order scheduled to generate (date only)?<input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>How old is this device in years (rounded)?<input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What total percentage of time has this device been down?<input type="text" name="q5" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What is the last time this device was updated from CDW (date only)?<input type="text" name="q6" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>How many Clinical Work Orders has this device had over its lifecycle to date?<input type="text" name="q7" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+      </ol>
+
+      <h3>Asset Tag: 17435</h3>
+      <ol>
+        <li>When did the warranty expire on this device?<input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>When was this device last inventoried in AEMS/MERS?<input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>Who is primarily assigned responsibility for Clinical Work Orders on this device?<input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>Which VLAN is this device in according to NMDD?<input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What is the State of the full service contract this device is included in?<input type="text" name="q5" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What is the Hostname of this device according to NMDD?<input type="text" name="q6" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>How many “child” or component devices are associated with this device?<input type="text" name="q7" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+      </ol>
+
+      
     </section>
 
     <section class="lab-section" data-lab="Technician Capstone Lab">
