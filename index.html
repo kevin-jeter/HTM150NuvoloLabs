@@ -903,12 +903,12 @@ body.dark .banner {
         <li>Is this device Compatible with Oracle Health (Cerner) as indicated in the Clinical Devices record?<input type="text" name="q7" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
       </ol>
       <p><b>Answer Key:</b></p>
-      <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-location-1')">Answer Location</button><button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-answer-1')">Answer</button>
+      
       <table class="styled-table">
         <thead>
           <th>Question Number</th>
-          <th>Answer Location</th>
-          <th>Answer</th>
+          <th>Answer Location <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-location-1')">Answer Location</button></th>
+          <th>Answer <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-answer-1')">Answer</button></th>
         </thead>
         <tbody>
           <tr>
@@ -924,6 +924,7 @@ body.dark .banner {
           </tr>
           
         </tbody>
+      </table>
 
       <h3>Asset Tag: 33333</h3>
       <ol>
