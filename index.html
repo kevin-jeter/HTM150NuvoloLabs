@@ -890,11 +890,19 @@ body.dark .banner {
         <li>Use the Asset Tag search or the filters on this list to search for each Asset Tag listed below.</li>
         <li>Open the device record by clicking on the Asset Tag for it.</li>
       </ol>
-      <p>An answer key will be provided for each device that explains where to find the information.</p>
+      <p>An answer key will be provided for each question that explains where to find the information.</p>
 
       <h3>Asset Tag: 36887</h3>
       <ol>
-        <li>What is the Vendor Site ID needed for reporting issues and submitting repair requests to the manufacturer?<input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
+        <li>What is the Vendor Site ID needed for reporting issues and submitting repair requests to the manufacturer?<input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;">
+        <button class="toggle-button" onclick="toggleAnswerKey(this, 'q1-a1')">Answer Key</button>
+        </li>
+        <div id="answer-key-1" class="lab-section">
+        <ol type = "a"> 
+          <li>Location: Vendor Tab</li>
+          <li>Answer: LEP440982</li>
+        </ol>
+        </div>
         <li>Where is this Clinical Device located within the facility?<input type="text" name="q2" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
         <li>Who is primarily assigned responsibility for Clinical Work Orders on this device?<input type="text" name="q3" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
         <li>Is this device a component of a Parent Device?<input type="text" name="q4" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
@@ -902,41 +910,7 @@ body.dark .banner {
         <li>What is the IP Address assigned to this Device in NMDD?<input type="text" name="q6" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
         <li>Is this device Compatible with Oracle Health (Cerner) as indicated in the Clinical Devices record?<input type="text" name="q7" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
       </ol>
-      <p><b>Answer Key:</b></p>
-      
-      <table class="styled-table">
-        <thead>
-          <th>Question Number</th>
-          <th>Answer Location <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-location-1')">Answer Location</button></th>
-          <th>Answer <button class="toggle-button" onclick="toggleAnswerKey(this, 'answer-answer-1')">Answer</button></th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              Question 1
-            </td>
-            <td>
-              <div id="answer-location-1" class="lab-section"> Vendor Tab </div>
-            </td>
-            <td>
-              <div id="answer-answer-1" class="lab-section"> LEP440982 </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Question 2
-            </td>
-            <td>
-              <div id="answer-location-1" class="lab-section"> Main Form </div>
-            </td>
-            <td>
-              <div id="answer-answer-1" class="lab-section"> Building 0086, Floor 2, Room 2811 </div>
-            </td>
-          </tr>
-          
-        </tbody>
-      </table>
-
+    
       <h3>Asset Tag: 33333</h3>
       <ol>
         <li>What is the Serial Number of this device?<input type="text" name="q1" placeholder="Enter your answer here" style="width: 100%; height: 30px;"></li>
